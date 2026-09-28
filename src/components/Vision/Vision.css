@@ -1,0 +1,82 @@
+/* "Un nuevo Surquillo" — desktop 1920 (XD artboard: y 3425 → 3859) */
+.vision {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  width: 1920px;
+  height: 434px;
+  overflow: hidden;
+  background: #f4f8fc;
+  color: #13141d;
+}
+
+/* Semicírculo rojo (trazo de 60px) pegado al borde izquierdo */
+.vision__arc {
+  position: absolute;
+  top: 101.25px;
+  left: 0;
+}
+
+/* Columna de texto de x 200 a x 1150 */
+.vision__content {
+  flex: none;
+  width: 950px;
+  margin-left: 200px;
+  padding-top: 131.8px;
+}
+
+.vision__title {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 48px;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.vision__title-accent {
+  color: #e10803;
+}
+
+.vision__text {
+  margin: 7.12px 0 0;
+  font-family: 'Nunito', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 28px;
+  white-space: nowrap;
+}
+
+/* Logo PRIN 174x174 en (1150, 149) + texto en x 1348 */
+.vision__brand {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 149px;
+}
+
+.vision__brand img {
+  display: block;
+  flex: none;
+}
+
+.vision__brand-name {
+  display: flex;
+  flex-direction: column;
+  margin: 5.29px 0 0 24px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 900;
+}
+
+.vision__brand-top {
+  font-size: 70px;
+  line-height: 82px;
+  color: #e10803;
+}
+
+.vision__brand-bottom {
+  font-size: 76px;
+  line-height: 51.76px;
+  color: #292b41;
+}

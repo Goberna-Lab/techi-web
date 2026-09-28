@@ -1,0 +1,74 @@
+/* Surquillo Valiente — desktop 1920 (XD artboard: y 6135 → 6605) */
+.vote {
+  display: flex;
+  align-items: flex-start;
+  width: 1920px;
+  height: 470px;
+  background: #ffffff;
+  color: #13141d;
+}
+
+/* Columna de texto de x 498 a x 1182 */
+.vote__content {
+  flex: none;
+  width: 684px;
+  margin-left: 498px;
+  padding-top: 152.18px;
+}
+
+.vote__title {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 54px;
+  font-weight: 800;
+  line-height: 48px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #e10803;
+}
+
+.vote__subtitle {
+  margin: 13.95px 0 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 39px;
+  font-weight: 800;
+  line-height: 48px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.vote__ballot {
+  margin-top: 99.76px;
+}
+
+.vote__ballot-label {
+  margin: 0 0 0 1px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 34px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Recuadro 240x240 con borde rojo interior de 2px; logo 186x186 a 27px; aspa a 9.75px */
+.vote__ballot-box {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  margin-top: 17.24px;
+  border: 2px solid #e10803;
+  background: #ffffff;
+}
+
+.vote__ballot-logo {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+}
+
+.vote__ballot-x {
+  position: absolute;
+  top: 7.75px;
+  left: 7.75px;
+}

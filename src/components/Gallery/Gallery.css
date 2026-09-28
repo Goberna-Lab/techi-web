@@ -1,0 +1,91 @@
+/* Surquillo, de cerca — desktop 1920 (XD artboard: y 5028 → 6135) */
+.gallery {
+  width: 1920px;
+  height: 1107px;
+  padding: 92.06px 0 0 200px;
+  background: #f4f8fc;
+  color: #13141d;
+}
+
+.gallery__eyebrow {
+  position: relative;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 42px;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: #e10803;
+}
+
+/* Línea roja 40x2 en x 149.5 */
+.gallery__eyebrow::before {
+  content: '';
+  position: absolute;
+  top: 19.44px;
+  left: -50.5px;
+  width: 40px;
+  height: 2px;
+  background: #e10803;
+}
+
+.gallery__title {
+  margin: 68.74px 0 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 32px;
+  text-transform: uppercase;
+}
+
+.gallery__text {
+  margin: 21.8px 0 0;
+  font-family: 'Nunito', sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 28px;
+  white-space: nowrap;
+}
+
+.gallery__grid {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+  margin-top: 79.4px;
+}
+
+/* Máscara 520x642 r16; imagen 963x642 desplazada -293px */
+.gallery__main {
+  position: relative;
+  flex: none;
+  width: 520px;
+  height: 642px;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.gallery__main img {
+  position: absolute;
+  top: 0;
+  left: -293px;
+  width: 963px;
+  height: 642px;
+  object-fit: cover;
+}
+
+/* 2x2 fotos de 461x305 r16: x 750 / 1242, y 5392 / 5730 */
+.gallery__photos {
+  display: grid;
+  grid-template-columns: repeat(2, 461px);
+  grid-auto-rows: 305px;
+  column-gap: 31px;
+  row-gap: 33px;
+}
+
+.gallery__photos img {
+  width: 461px;
+  height: 305px;
+  border-radius: 16px;
+  object-fit: cover;
+}

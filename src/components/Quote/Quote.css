@@ -1,0 +1,99 @@
+/* "No vengo a prometer" — desktop 1920 (XD artboard: y 2675 → 3425) */
+.quote {
+  position: relative;
+  width: 1920px;
+  height: 750px;
+  overflow: hidden;
+  background: #080e24;
+}
+
+/* Imagen 1920x1081 en y 2568 (107px por encima de la sección) */
+.quote__bg {
+  position: absolute;
+  top: -107px;
+  left: 0;
+  width: 1920px;
+  height: 1081px;
+  object-fit: cover;
+}
+
+/* Rectángulo 1293x750 con degradado #080E24 → transparente, opacidad 68% */
+.quote__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1293px;
+  height: 750px;
+  opacity: 0.6797;
+  background: linear-gradient(
+    90deg,
+    rgba(8, 14, 36, 1) 1.88%,
+    rgba(8, 14, 36, 0.949) 38.18%,
+    rgba(8, 14, 36, 0) 66.95%
+  );
+}
+
+.quote__content {
+  position: relative;
+  margin: 0;
+  padding: 166.5px 0 0 200px;
+  color: #ffffff;
+}
+
+.quote__title {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+}
+
+.quote__line {
+  display: block;
+  line-height: 50px;
+  white-space: nowrap;
+}
+
+.quote__line--md {
+  font-size: 50px;
+}
+
+.quote__line--xl {
+  margin-top: 15.45px;
+  font-size: 85px;
+}
+
+.quote__line--last {
+  margin-top: 19.55px;
+}
+
+.quote__text {
+  margin: 15.76px 0 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 35px;
+  white-space: nowrap;
+}
+
+/* Línea roja 50x1 en x 200.5 + texto en x 260 */
+.quote__author {
+  display: flex;
+  align-items: center;
+  gap: 9.5px;
+  margin-top: 25.8px;
+  padding-left: 0.5px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 42px;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.702);
+}
+
+.quote__author::before {
+  content: '';
+  flex: none;
+  width: 50px;
+  height: 1px;
+  background: #e10803;
+}

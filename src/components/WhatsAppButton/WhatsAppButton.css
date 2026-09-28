@@ -1,0 +1,14 @@
+.whatsapp-button {
+  position: fixed;
+  right: 200px;
+  bottom: 20px;
+  z-index: 50;
+  display: block;
+  width: 63.75px;
+  height: 63.75px;
+  border-radius: 50%;
+}
+
+.whatsapp-button img {
+  display: block;
+}

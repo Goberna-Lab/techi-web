@@ -1,0 +1,196 @@
+/* Conoce a Techi — desktop 1920 (XD artboard: y 1080 → 1880) */
+.about {
+  --about-dark: #13141d;
+  --about-red: #e10803;
+
+  position: relative;
+  width: 1920px;
+  height: 800px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+/* Foto + arco rojo (una sola imagen en XD): máscara 933x800 en (0, 0); imagen 1207x987 en (-254, -152) */
+.about__media {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 933px;
+  height: 800px;
+  overflow: hidden;
+}
+
+.about__media img {
+  position: absolute;
+  top: -152px;
+  left: -254px;
+  width: 1207px;
+  height: 987px;
+  object-fit: cover;
+}
+
+.about__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 91.7px 0 0 991.5px;
+  color: var(--about-dark);
+}
+
+.about__eyebrow {
+  position: relative;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 42px;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--about-red);
+}
+
+/* Línea roja 40x2 en x 941 */
+.about__eyebrow::before {
+  content: '';
+  position: absolute;
+  top: 19.8px;
+  left: -50.5px;
+  width: 40px;
+  height: 2px;
+  background: var(--about-red);
+}
+
+.about__title {
+  margin: 34.1px 0 0;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+}
+
+.about__title-name {
+  display: block;
+  font-size: 52px;
+  line-height: 52px;
+}
+
+.about__title-accent {
+  display: block;
+  font-size: 84px;
+  line-height: 81.6px;
+  color: var(--about-red);
+}
+
+.about__text {
+  margin: 22px 0 0;
+  font-family: 'Nunito', sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 28px;
+  white-space: nowrap;
+}
+
+.about__text strong {
+  font-weight: 700;
+}
+
+.about__btn {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 17.2px;
+  width: 301px;
+  height: 64px;
+  margin-top: 44.6px;
+  padding-left: 86px;
+  border-radius: 32px;
+  background: var(--about-red);
+  font-family: 'Inter', sans-serif;
+  font-variation-settings: 'opsz' 18;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.about__btn img {
+  flex: none;
+  display: block;
+}
+
+.about__stats {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 49.2px;
+}
+
+.about__stat {
+  display: flex;
+  align-items: flex-start;
+  flex: none;
+}
+
+.about__stat--years {
+  width: 196.5px;
+}
+
+.about__stat--experience {
+  margin-left: 59.12px;
+}
+
+.about__stat-badge {
+  flex: none;
+  display: block;
+  margin-top: 15.72px;
+}
+
+.about__stat--years .about__stat-body {
+  margin-left: 16.27px;
+}
+
+.about__stat--experience .about__stat-body {
+  margin-left: 12.46px;
+}
+
+.about__stat-number {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 48px;
+  color: var(--about-red);
+}
+
+.about__stat-plus {
+  position: relative;
+  top: 1px;
+  margin-left: 7.45px;
+  font-size: 49px;
+  font-weight: 500;
+}
+
+.about__stat-label {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 300;
+}
+
+.about__stat-label--sm {
+  margin: 9px 0 0;
+  font-size: 13px;
+  line-height: 14px;
+}
+
+.about__stat-label--md {
+  margin: 7.35px 0 0 3.28px;
+  font-size: 18px;
+  line-height: 20px;
+}
+
+.about__stats-divider {
+  flex: none;
+  width: 1px;
+  height: 86.56px;
+  margin-top: 4.08px;
+  background: #707070;
+}

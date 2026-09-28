@@ -1,0 +1,206 @@
+/* Footer — desktop 1920 (XD artboard: barra roja y 6605 → 6615, fondo 6615 → 7388) */
+.footer {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  width: 1920px;
+  height: 783px;
+  overflow: hidden;
+  border-top: 10px solid #e10803;
+  background: #13141d;
+}
+
+/* Arco rojo (trazo 140px) detrás de la foto */
+.footer__arc {
+  position: absolute;
+  top: 391px;
+  left: 561.25px;
+}
+
+.footer__photo {
+  position: absolute;
+  top: 128px;
+  left: 629px;
+  object-fit: cover;
+}
+
+/* Logo en (200, 6839) y redes debajo; la tarjeta del formulario empieza en x 1189 */
+.footer__info {
+  position: relative;
+  z-index: 1;
+  flex: none;
+  width: 989px;
+  margin-left: 200px;
+  padding-top: 224px;
+}
+
+.footer__socials {
+  margin: 44px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer__socials li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+}
+
+.footer__socials li + li {
+  margin-top: 9px;
+}
+
+.footer__socials img {
+  display: block;
+  flex: none;
+}
+
+.footer__socials span {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 23px;
+  color: #ffffff;
+}
+
+/* Tarjeta 514x535 r10 en (1189, 6735), sombra 0 6 8 negro 40% */
+.footer__form {
+  position: relative;
+  z-index: 2;
+  flex: none;
+  width: 514px;
+  height: 535px;
+  margin-top: 120px;
+  padding-top: 39.91px;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.footer__row {
+  display: flex;
+  align-items: flex-start;
+}
+
+.footer__row + .footer__row {
+  margin-top: 24.67px;
+}
+
+.footer__row:nth-child(5) {
+  margin-top: 25.06px;
+}
+
+.footer__field {
+  flex: none;
+  width: 211.81px;
+  margin-left: var(--x);
+}
+
+.footer__field--select {
+  width: 447.12px;
+}
+
+.footer__field--message {
+  width: 442.54px;
+}
+
+.footer__field label {
+  display: block;
+  margin: var(--dy) 0 0 var(--dx);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 13px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #1b1f28;
+}
+
+.footer__field input,
+.footer__field select,
+.footer__field textarea {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  margin: var(--gap) 0 0;
+  padding: 0 0 10.73px;
+  border: 0;
+  border-bottom: 1px solid #c0c1c7;
+  border-radius: 0;
+  outline: none;
+  background: transparent;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0.88px;
+  text-indent: var(--dx);
+  color: #1b1f28;
+}
+
+.footer__row--first input {
+  padding-bottom: 10.16px;
+}
+
+.footer__field input::placeholder,
+.footer__field textarea::placeholder {
+  color: rgba(27, 31, 40, 0.6);
+  opacity: 1;
+}
+
+.footer__field input:focus-visible,
+.footer__field select:focus-visible,
+.footer__field textarea:focus-visible {
+  border-bottom-color: #e10803;
+}
+
+.footer__field input,
+.footer__field select {
+  height: 25.73px;
+}
+
+.footer__row--first input {
+  height: 25.16px;
+}
+
+/* Chevron 17.5x9.75 en x 1650.5 */
+.footer__field select {
+  appearance: none;
+  background: url('../../assets/footer/select-arrow.svg') no-repeat 430.12px 2.1px;
+  cursor: pointer;
+}
+
+.footer__field textarea {
+  height: 51.2px;
+  padding-bottom: 36.2px;
+  overflow: hidden;
+  resize: none;
+}
+
+/* Botón 175x42 r21 en (1220, 7203) */
+.footer__submit {
+  display: flex;
+  align-items: center;
+  gap: 25.67px;
+  width: 175.09px;
+  height: 42.02px;
+  margin: 34.72px 0 0 31px;
+  padding: 0 0 0 22.73px;
+  border: 0;
+  border-radius: 21px;
+  background: #e10803;
+  font-family: 'Inter', sans-serif;
+  font-variation-settings: 'opsz' 18;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 25px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.footer__submit img {
+  display: block;
+  flex: none;
+}

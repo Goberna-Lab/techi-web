@@ -1,0 +1,34 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: #ffffff;
+}
+
+body {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  display: block;
+}
+
+/* Laptop 1366px: el diseño de 1920 se escala en proporción (1366 / 1920) para mantener el XD.
+   overflow-x evita el scroll horizontal cuando el navegador usa barra de scroll clásica. */
+@media (width: 1366px) {
+  html {
+    overflow-x: hidden;
+  }
+
+  #root {
+    zoom: 0.711458;
+  }
+}

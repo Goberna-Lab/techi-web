@@ -1,0 +1,140 @@
+/* Hero — desktop 1920x1080 (XD artboard: hero ocupa y 90 → 1080, debajo del header de 90px) */
+.hero {
+  --hero-dark: #13141d;
+  --hero-red: #e10803;
+
+  position: relative;
+  width: 1920px;
+  height: 990px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+/* Fondo: la misma imagen colocada dos veces en XD (x: 1 y x: 255) */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero__bg-img {
+  position: absolute;
+  top: 0;
+  width: 1759.08px;
+  height: 990.01px;
+  object-fit: cover;
+}
+
+.hero__bg-img--left {
+  left: 1px;
+}
+
+.hero__bg-img--main {
+  left: 255px;
+}
+
+/* Foto de Techi: máscara 655x843 en (1065, 147); imagen 681x908 en (1039, 147) */
+.hero__portrait {
+  position: absolute;
+  top: 147px;
+  left: 1065px;
+  z-index: 1;
+  width: 655px;
+  height: 843px;
+  overflow: hidden;
+}
+
+.hero__portrait img {
+  position: absolute;
+  top: 0;
+  left: -26px;
+  width: 681px;
+  height: 908px;
+  object-fit: cover;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 258px 0 0 200px;
+}
+
+.hero__title {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  color: var(--hero-dark);
+}
+
+.hero__title-top {
+  display: block;
+  font-size: 88px;
+  line-height: 82px;
+}
+
+.hero__title-accent {
+  display: block;
+  font-size: 104px;
+  line-height: 105px;
+  color: var(--hero-red);
+}
+
+.hero__text {
+  width: 611px;
+  margin: 15px 0 0;
+  font-family: 'Inter', sans-serif;
+  font-variation-settings: 'opsz' 18;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 32px;
+  color: var(--hero-dark);
+}
+
+.hero__text strong {
+  font-weight: 700;
+}
+
+.hero__actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 53px;
+}
+
+.hero__btn {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  width: 301px;
+  height: 64px;
+  border-radius: 32px;
+  font-family: 'Inter', sans-serif;
+  font-variation-settings: 'opsz' 18;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.hero__btn img {
+  flex: none;
+  display: block;
+}
+
+.hero__btn--primary {
+  gap: 10px;
+  padding-left: 28px;
+  background: var(--hero-red);
+  color: #ffffff;
+}
+
+.hero__btn--outline {
+  gap: 9.6px;
+  padding-left: 17px;
+  border: 1px solid var(--hero-dark);
+  color: var(--hero-dark);
+}

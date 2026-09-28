@@ -1,0 +1,116 @@
+/* Experiencia que nace del compromiso — desktop 1920 (XD artboard: y 1880 → 2675) */
+.experience {
+  --experience-dark: #13141d;
+  --experience-red: #e10803;
+
+  width: 1920px;
+  height: 795px;
+  padding-top: 98px;
+  background: #ffffff;
+  color: var(--experience-dark);
+}
+
+/* Tarjeta 1503x597 en (200, 1978) */
+.experience__card {
+  width: 1503px;
+  height: 597px;
+  margin-left: 200px;
+  padding-top: 90.2px;
+  border-radius: 20px;
+  background: #f4f8fc;
+}
+
+/* En XD el título está centrado en x 960, no en el centro de la tarjeta (951.5) */
+.experience__title {
+  margin: 0;
+  padding-left: 17px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 48px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.experience__title-accent {
+  color: var(--experience-red);
+}
+
+.experience__items {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 34.8px;
+}
+
+.experience__item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: none;
+  width: 400px;
+  text-align: center;
+}
+
+.experience__item--surquillo {
+  margin-left: 46px;
+}
+
+.experience__item--trayectoria {
+  margin-left: 114px;
+}
+
+.experience__item--servicio {
+  margin-left: 103px;
+}
+
+.experience__icon {
+  display: block;
+  flex: none;
+}
+
+/* Los círculos de XD no están centrados sobre su columna de texto */
+.experience__item--surquillo .experience__icon {
+  margin-left: 120px;
+}
+
+.experience__item--trayectoria .experience__icon {
+  margin-left: 112px;
+}
+
+.experience__item--servicio .experience__icon {
+  margin-left: 130px;
+}
+
+.experience__item-title {
+  align-self: stretch;
+  margin: 18.2px 0 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 42px;
+  text-transform: uppercase;
+  color: var(--experience-red);
+}
+
+.experience__item-text {
+  align-self: stretch;
+  margin: 13.2px 0 0;
+  font-family: 'Nunito', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 28px;
+  white-space: nowrap;
+}
+
+.experience__item-text--light {
+  font-weight: 300;
+}
+
+.experience__item-text strong {
+  font-weight: 700;
+}
+
+.experience__item-text--tall {
+  margin-top: 11.2px;
+  line-height: 32px;
+}
