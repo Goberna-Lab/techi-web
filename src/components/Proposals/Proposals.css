@@ -36,49 +36,76 @@
   margin-top: 63px;
 }
 
-/* Columna de texto de x 200 a x 966 */
+/* Columna de texto de x 200 a x 966. El bloque va de y 4056 a 4724 (el alto de la foto) */
 .proposals__info {
   flex: none;
   width: 766px;
+  position: relative;
+  height: 668px;
+  padding-top: 15px;
 }
 
-.proposals__kicker {
+/* Solo la 08: número rojo sobre el título (baseline 4105, título en 4185) */
+.proposals__number {
+  margin: 0 0 40px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 40px;
+  color: #e10803;
+}
+
+/* Poppins ExtraBold 40, baseline 4105 */
+.proposals__heading {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 42px;
-  letter-spacing: 1.8px;
-  text-transform: uppercase;
-}
-
-.proposals__heading {
-  margin: 11.36px 0 0;
-  font-family: 'Poppins', sans-serif;
-  font-size: 26px;
+  font-size: 40px;
   font-weight: 800;
-  line-height: 32px;
+  line-height: 40px;
   text-transform: uppercase;
   white-space: nowrap;
 }
 
-/* En XD este párrafo está en x 206 */
+/* Poppins SemiBold 21, baseline 4141 */
+.proposals__subtitle {
+  margin: 6.65px 0 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 32px;
+}
+
+/* Con título de dos renglones (07) o número encima (08) la bajada baja 4px más */
+.proposals__intro--tall .proposals__subtitle {
+  margin-top: 10.65px;
+}
+
+/* Marco de texto de 632. Párrafo y lista van a la y de su artboard (en XD no caen igual en todos) */
 .proposals__text {
-  margin: 9.49px 0 0 6px;
+  position: absolute;
+  width: 632px;
+  margin: 0;
   font-family: 'Nunito', sans-serif;
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 400;
   line-height: 28px;
-  white-space: nowrap;
+}
+
+/* La 08: marco de 495 a 38px de interlínea */
+.proposals__text--loose {
+  width: 495px;
+  line-height: 38px;
 }
 
 .proposals__list {
-  margin: 30px 0 0;
+  position: absolute;
+  left: 0;
+  margin: 0;
   padding: 0;
   list-style: none;
 }
 
-/* Check 24x24 en x 200, texto en x 241 */
+/* Check 24x24 en x 200, texto (marco de 578) en x 241. Entre medidas, un renglón en blanco */
 .proposals__item {
   display: flex;
   align-items: flex-start;
@@ -92,27 +119,28 @@
 .proposals__item img {
   display: block;
   flex: none;
-  margin-top: 2.84px;
-}
-
-.proposals__item--first img {
-  margin-top: 0.84px;
+  margin-top: 1.75px;
 }
 
 .proposals__item p {
+  width: 578px;
   margin: 0;
   font-family: 'Nunito', sans-serif;
   font-size: 17px;
   font-weight: 400;
   line-height: 24px;
-  white-space: nowrap;
 }
 
 .proposals__item strong {
   font-weight: 700;
 }
 
-/* Máscara 737x660 r16 en (966, 4064); imagen 1023x682 en (851, 4061) */
+.proposals__bullet {
+  display: block;
+  margin-top: 24px;
+}
+
+/* Máscara 737x660 r16 en (966, 4064). La foto de cada propuesta trae su propio encuadre */
 .proposals__media {
   position: relative;
   flex: none;
@@ -125,127 +153,175 @@
 
 .proposals__media img {
   position: absolute;
-  top: -3px;
-  left: -115px;
-  width: 1023px;
-  height: 682px;
   object-fit: cover;
 }
 
-/* Tarjetas 354x140 en y 4788, x 201 / 584 / 967 / 1350 */
+/* Fila en y 4789: flecha 56 en x 200, tarjetas 322x128 desde x 280, flecha 56 en x 1647 */
+.proposals__nav {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 65px;
+}
+
+.proposals__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 56px;
+  height: 56px;
+  margin-top: 46px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.proposals__arrow--prev {
+  margin-right: 24px;
+  background: #ffffff;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16);
+  color: #454a50;
+}
+
+.proposals__arrow--next {
+  margin-left: 22px;
+  background: #e10803;
+  color: #ffffff;
+}
+
 .proposals__cards {
   display: flex;
-  gap: 29px;
-  margin: 63.09px 0 0 1px;
+  gap: 19px;
 }
 
 .proposal-card {
   position: relative;
   display: flex;
   flex: none;
-  width: 354px;
-  height: 140px;
+  width: 322px;
+  height: 128px;
+  padding: 0;
+  border: 0;
   border-radius: 10px;
   background: #ffffff;
-  text-decoration: none;
+  font: inherit;
+  text-align: left;
   color: #13141d;
+  cursor: pointer;
 }
 
-/* Borde interior: en XD la foto tapa el borde gris; el borde rojo de la activa va encima */
+/* Borde encima de la foto: gris de 1px, o rojo de 2px en la activa */
 .proposal-card::after {
   content: '';
   position: absolute;
   inset: 0;
-  z-index: 0;
+  z-index: 2;
   border: 1px solid #bebebe;
   border-radius: 10px;
   pointer-events: none;
 }
 
-.proposal-card--active {
-  background: transparent;
-}
-
 .proposal-card--active::after {
-  z-index: 2;
   border: 2px solid #e10803;
 }
 
 .proposal-card__body {
   position: relative;
-  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   flex: none;
-  width: 177px;
-  height: 140px;
+  width: 161px;
+  height: 128px;
 }
 
-/* Subrayado rojo 25x2 bajo el número */
+/* Subrayado rojo 22.77x2 bajo el número, en (11.38, 32.57) */
 .proposal-card__body::before {
   content: '';
   position: absolute;
-  top: 35.86px;
-  left: 12.5px;
-  width: 25px;
+  top: 31.57px;
+  left: 11.38px;
+  width: 22.77px;
   height: 2px;
   background: #e10803;
 }
 
+/* Poppins SemiBold 15, baseline a 27px del borde. En XD el número no cae igual en las 4 */
 .proposal-card__number {
   display: block;
-  margin: 4.06px 0 0 var(--number-x);
+  margin: 4.25px 0 0 12px;
   font-family: 'Poppins', sans-serif;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 600;
-  line-height: 42px;
+  line-height: 35px;
   color: #e10803;
 }
 
+.proposal-card:nth-child(1) .proposal-card__number {
+  margin-left: 15px;
+}
+
+.proposal-card:nth-child(3) .proposal-card__number {
+  margin-left: 13px;
+}
+
+/* Poppins ExtraBold 14, baseline a 60px del borde */
 .proposal-card__title {
   display: block;
-  margin: 7.16px 0 0 12px;
+  margin: 8.35px 0 0 11px;
   font-family: 'Poppins', sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 800;
-  line-height: 17px;
+  line-height: 15px;
   text-transform: uppercase;
 }
 
+.proposal-card__title--small {
+  font-size: 12px;
+}
+
+/* En algunos artboards de XD el número, la raya y el rótulo bajan 19px; la flecha no */
+.proposal-card--low .proposal-card__body::before {
+  top: 50.57px;
+}
+
+.proposal-card--low .proposal-card__number,
+.proposal-card--low .proposal-card__title {
+  transform: translateY(19px);
+}
+
+/* Círculo 27.32 en (10.93, 89.25) */
 .proposal-card__arrow {
   position: relative;
   display: block;
-  width: 30px;
-  height: 30px;
-  margin: var(--arrow-y) 0 0 12px;
+  width: 27.32px;
+  height: 27.32px;
+  margin: 11.65px 0 0 10.93px;
   border-radius: 50%;
   background: #ffffff;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16);
 }
 
 .proposal-card__arrow img {
   position: absolute;
-  top: 10.75px;
-  left: 9.75px;
+  top: 9.73px;
+  left: 8.96px;
 }
 
-/* Foto: máscara 177x140 r10 en la mitad derecha; imagen 210x140 desplazada -31px */
+/* Foto: la mitad derecha de la tarjeta, 161x128 */
 .proposal-card__media {
   position: relative;
-  z-index: 1;
   flex: none;
-  width: 177px;
-  height: 140px;
+  width: 161px;
+  height: 128px;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 0 10px 10px 0;
 }
 
 .proposal-card__media img {
-  position: absolute;
-  top: 0;
-  left: -31px;
-  width: 210px;
-  height: 140px;
+  display: block;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
