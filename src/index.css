@@ -4,6 +4,15 @@
   box-sizing: border-box;
 }
 
+/* --page-zoom: escala de la página (1 en desktop 1920). El scroll a anclas deja libre el header fijo */
+:root {
+  --page-zoom: 1;
+}
+
+html {
+  scroll-padding-top: calc(90px * var(--page-zoom));
+}
+
 html,
 body {
   margin: 0;
@@ -28,7 +37,11 @@ img {
     overflow-x: hidden;
   }
 
+  :root {
+    --page-zoom: 0.711458;
+  }
+
   #root {
-    zoom: 0.711458;
+    zoom: var(--page-zoom);
   }
 }

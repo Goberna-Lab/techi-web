@@ -1,11 +1,13 @@
-/* Hero — desktop 1920x1080 (XD artboard: hero ocupa y 90 → 1080, debajo del header de 90px) */
+/* Hero — desktop 1920x1080 (XD artboard: hero ocupa y 90 → 1080, debajo del header de 90px).
+   Alto = ventana − header, para que el hero se vea completo sin scroll (máx. 990 como el XD, mín. 600) */
 .hero {
   --hero-dark: #13141d;
   --hero-red: #e10803;
+  --hero-h: clamp(600px, calc(100vh / var(--page-zoom) - 90px), 990px);
 
   position: relative;
   width: 1920px;
-  height: 990px;
+  height: var(--hero-h);
   overflow: hidden;
   background: #ffffff;
 }
@@ -21,7 +23,7 @@
   position: absolute;
   top: 0;
   width: 1759.08px;
-  height: 990.01px;
+  height: 100%;
   object-fit: cover;
 }
 
@@ -33,23 +35,26 @@
   left: 255px;
 }
 
-/* Foto de Techi: máscara 655x843 en (1065, 147); imagen 681x908 en (1039, 147) */
+/* Foto de Techi: máscara 655x843 en (1065, 147); imagen 681x908 en (1039, 147).
+   Va apoyada abajo y escala con el alto del hero (843/990), manteniendo su centro en x 1392.5 */
 .hero__portrait {
+  --portrait-h: calc(var(--hero-h) * 0.851515);
+
   position: absolute;
-  top: 147px;
-  left: 1065px;
+  bottom: 0;
+  left: calc(1392.5px - var(--portrait-h) * 0.388493);
   z-index: 1;
-  width: 655px;
-  height: 843px;
+  width: calc(var(--portrait-h) * 0.776986);
+  height: var(--portrait-h);
   overflow: hidden;
 }
 
 .hero__portrait img {
   position: absolute;
   top: 0;
-  left: -26px;
-  width: 681px;
-  height: 908px;
+  left: -3.9695%;
+  width: 103.9695%;
+  height: 107.7106%;
   object-fit: cover;
 }
 
@@ -59,7 +64,8 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 258px 0 0 200px;
+  /* 258px en el XD: el bloque de texto (497px) conserva su posición proporcional en el alto */
+  padding: calc((var(--hero-h) - 497px) * 0.523327) 0 0 200px;
 }
 
 .hero__title {

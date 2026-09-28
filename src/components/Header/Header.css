@@ -1,6 +1,7 @@
-/* Header — desktop 1920 (XD artboard: y 0 → 90) */
+/* Header — desktop 1920 (XD artboard: y 0 → 90). Fijo arriba al hacer scroll */
 .header {
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 10;
   display: flex;
   align-items: flex-start;
