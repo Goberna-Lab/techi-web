@@ -13,6 +13,17 @@ html {
   scroll-padding-top: calc(90px * var(--page-zoom));
 }
 
+/* El diseño mide 1920 fijo, pero con barra de scroll clásica (Windows, Chrome) el ancho útil
+   queda en ~1905: sin esto sobran ~15px y aparece scroll lateral. clip (no hidden) no crea
+   contenedor de scroll, así que ni la rueda ni las anclas pueden correr la página. Lo que se
+   recorta es fondo: el contenido termina en x 1720. Solo desde 1366: en pantallas más angostas
+   (móvil) no hay diseño propio y hace falta poder deslizar para ver el resto. */
+@media (min-width: 1366px) {
+  #root {
+    overflow-x: clip;
+  }
+}
+
 html,
 body {
   margin: 0;
@@ -30,13 +41,8 @@ img {
   display: block;
 }
 
-/* Laptop 1366px: el diseño de 1920 se escala en proporción (1366 / 1920) para mantener el XD.
-   overflow-x evita el scroll horizontal cuando el navegador usa barra de scroll clásica. */
+/* Laptop 1366px: el diseño de 1920 se escala en proporción (1366 / 1920) para mantener el XD. */
 @media (width: 1366px) {
-  html {
-    overflow-x: hidden;
-  }
-
   :root {
     --page-zoom: 0.711458;
   }
