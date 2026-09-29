@@ -61,3 +61,19 @@ img {
     display: inline;
   }
 }
+
+/* Mobile (hasta 767px): una columna a todo el ancho. Los textos cortan solos (sin los saltos de cada XD) */
+@media (max-width: 767px) {
+  html {
+    scroll-padding-top: 64px;
+  }
+
+  #root {
+    overflow-x: clip;
+  }
+
+  .br-wide,
+  .br-laptop {
+    display: none;
+  }
+}

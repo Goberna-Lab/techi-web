@@ -239,3 +239,94 @@
     height: 18.8px;
   }
 }
+
+/* Mobile (hasta 767px): texto arriba y la foto de Techi abajo, sobre el mismo fondo */
+@media (max-width: 767px) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+  }
+
+  .hero__bg-img--left {
+    display: none;
+  }
+
+  .hero__bg-img--main {
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-position: 72% center;
+  }
+
+  /* Velo claro detrás del texto para que se lea sobre la foto del fondo */
+  .hero__bg::after {
+    content: '';
+    position: absolute;
+    inset: 0 0 45% 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.92) 55%, rgba(255, 255, 255, 0));
+  }
+
+  .hero__content {
+    order: 1;
+    padding: 36px 20px 0;
+  }
+
+  .hero__title-top {
+    font-size: clamp(34px, 10.4vw, 46px);
+    line-height: 1;
+  }
+
+  .hero__title-accent {
+    font-size: clamp(40px, 12.4vw, 54px);
+    line-height: 1.08;
+  }
+
+  .hero__text {
+    width: auto;
+    margin-top: 12px;
+    font-size: 16px;
+    line-height: 24px;
+    white-space: normal;
+  }
+
+  .hero__text br {
+    display: none;
+  }
+
+  .hero__actions {
+    flex-direction: column;
+    align-self: stretch;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .hero__btn,
+  .hero__btn--primary,
+  .hero__btn--outline {
+    justify-content: center;
+    width: 100%;
+    height: 52px;
+    padding: 0 16px;
+    border-radius: 26px;
+    font-size: 14px;
+  }
+
+  .hero__btn--outline {
+    background: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Foto: la misma máscara del XD (655x843), centrada y apoyada abajo */
+  .hero__portrait {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    order: 2;
+    align-self: center;
+    width: min(82vw, 360px);
+    height: auto;
+    aspect-ratio: 655 / 843;
+    margin-top: 28px;
+  }
+}

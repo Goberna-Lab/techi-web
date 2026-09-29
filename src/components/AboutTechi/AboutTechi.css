@@ -317,3 +317,129 @@
     margin-top: 0;
   }
 }
+
+/* Mobile (hasta 767px): la foto con el arco arriba y el texto debajo */
+@media (max-width: 767px) {
+  .about {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+  }
+
+  /* Mismo encuadre que la máscara 933x800 del 1920, en proporción */
+  .about__media {
+    position: relative;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 933 / 800;
+  }
+
+  .about__media img {
+    top: -19%;
+    left: -27.224%;
+    width: 129.368%;
+    height: 123.375%;
+  }
+
+  .about__content {
+    padding: 28px 20px 48px;
+  }
+
+  .about__eyebrow {
+    padding-left: 48px;
+    font-size: 15px;
+  }
+
+  .about__eyebrow::before {
+    left: 0;
+  }
+
+  .about__title {
+    margin-top: 12px;
+  }
+
+  .about__title-name {
+    font-size: 30px;
+    line-height: 34px;
+  }
+
+  .about__title-accent {
+    font-size: 50px;
+    line-height: 52px;
+  }
+
+  .about__text {
+    margin-top: 16px;
+    font-size: 16px;
+    line-height: 26px;
+    white-space: normal;
+  }
+
+  .about__btn {
+    align-self: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 320px;
+    height: 52px;
+    margin-top: 28px;
+    padding: 0;
+    font-size: 14px;
+  }
+
+  /* Dos columnas iguales con la línea divisoria al centro */
+  .about__stats {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    align-items: center;
+    align-self: stretch;
+    column-gap: 16px;
+    margin-top: 32px;
+  }
+
+  /* Cada dato apilado y centrado en su columna: ícono, número y rótulo */
+  .about__stat,
+  .about__stat--years,
+  .about__stat--experience {
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    margin: 0;
+    text-align: center;
+  }
+
+  .about__stat--years .about__stat-body,
+  .about__stat--experience .about__stat-body {
+    margin: 8px 0 0;
+  }
+
+  .about__stat-badge {
+    width: 44px;
+    height: 44px;
+    margin-top: 0;
+  }
+
+  .about__stat-number {
+    font-size: 36px;
+    line-height: 40px;
+  }
+
+  .about__stat-plus {
+    top: 0;
+    margin-left: 4px;
+    font-size: 36px;
+  }
+
+  .about__stat-label--sm,
+  .about__stat-label--md {
+    margin: 2px 0 0;
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  .about__stats-divider {
+    align-self: stretch;
+    height: auto;
+    margin-top: 0;
+  }
+}

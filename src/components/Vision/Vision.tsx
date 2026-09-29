@@ -9,9 +9,9 @@ function Vision() {
 
       <div className="vision__content">
         <h2 className="vision__title">
-          <span className="vision__title-accent">Un nuevo Surquillo:</span>
+          <span className="vision__title-accent">Un nuevo Surquillo:</span>{' '}
           <br />
-          más seguro, ordenado y con
+          más seguro, ordenado y con{' '}
           <br />
           oportunidades para todos
         </h2>

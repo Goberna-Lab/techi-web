@@ -193,3 +193,62 @@
     margin-top: 7.62px;
   }
 }
+
+/* Mobile (hasta 767px): la tarjeta a todo el ancho y los tres ítems uno debajo del otro */
+@media (max-width: 767px) {
+  .experience {
+    width: 100%;
+    height: auto;
+    padding: 0 16px 48px;
+  }
+
+  .experience__card {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 40px 20px 44px;
+  }
+
+  .experience__title {
+    padding: 0;
+    font-size: 27px;
+    line-height: 32px;
+  }
+
+  .experience__items {
+    flex-direction: column;
+    align-items: center;
+    gap: 36px;
+    margin-top: 32px;
+  }
+
+  .experience__item,
+  .experience__item--surquillo,
+  .experience__item--trayectoria,
+  .experience__item--servicio {
+    align-items: center;
+    width: 100%;
+    max-width: 340px;
+    margin: 0;
+  }
+
+  .experience__item .experience__icon {
+    width: 100px;
+    height: 100px;
+    margin: 0;
+  }
+
+  .experience__item-title {
+    margin-top: 12px;
+    font-size: 22px;
+    line-height: 32px;
+  }
+
+  .experience__item-text,
+  .experience__item-text--tall {
+    margin-top: 6px;
+    font-size: 17px;
+    line-height: 26px;
+    white-space: normal;
+  }
+}

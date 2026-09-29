@@ -19,3 +19,18 @@
     display: none;
   }
 }
+
+/* Mobile (hasta 767px): esquina inferior derecha */
+@media (max-width: 767px) {
+  .whatsapp-button {
+    right: 16px;
+    bottom: 16px;
+    width: 56px;
+    height: 56px;
+  }
+
+  .whatsapp-button img {
+    width: 56px;
+    height: 56px;
+  }
+}

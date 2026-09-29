@@ -1,4 +1,4 @@
-import { useState, useSyncExternalStore } from 'react'
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react'
 import type { CSSProperties } from 'react'
 import surquilloSeguro from '../../assets/proposals/surquillo-seguro.webp'
 import surquilloPreparado from '../../assets/proposals/surquillo-preparado.webp'
@@ -18,6 +18,7 @@ import checkIcon from '../../assets/proposals/check.svg'
 import cardArrow from '../../assets/proposals/card-arrow.svg'
 import { CHECK_SIZE, LAYOUT } from './proposalsLayout'
 import type { Board, Card, Line, Nav, Rule } from './proposalsLayout'
+import { PROPOSALS } from './proposalsContent'
 import './Proposals.css'
 
 const IMAGES: Record<string, string> = {
@@ -68,19 +69,18 @@ const DESCENT: Record<string, number> = {
   'Open Sans': 0.293,
 }
 
-/* Laptop 1366: su propio XD (1366x620) */
+/* Laptop 1366: su propio XD (1366x620). Mobile (hasta 767): versión en flujo, sin XD */
 const LAPTOP_QUERY = '(width: 1366px)'
+const MOBILE_QUERY = '(max-width: 767px)'
 
-function subscribeLaptop(onChange: () => void) {
-  const query = window.matchMedia(LAPTOP_QUERY)
-  query.addEventListener('change', onChange)
-  return () => query.removeEventListener('change', onChange)
-}
-
-function useIsLaptop() {
+function useMediaQuery(media: string) {
   return useSyncExternalStore(
-    subscribeLaptop,
-    () => window.matchMedia(LAPTOP_QUERY).matches,
+    (onChange) => {
+      const query = window.matchMedia(media)
+      query.addEventListener('change', onChange)
+      return () => query.removeEventListener('change', onChange)
+    },
+    () => window.matchMedia(media).matches,
     () => false,
   )
 }
@@ -218,8 +218,121 @@ function ProposalCard({
   )
 }
 
+/* Mobile: foto y textos en una columna; las 8 tarjetas en una fila que se desliza con el dedo */
+function ProposalsMobile() {
+  const [active, setActive] = useState(0)
+  const cardsRef = useRef<HTMLDivElement>(null)
+  const proposal = PROPOSALS[active]
+
+  const go = (step: number) => setActive((current) => (current + step + PROPOSAL_COUNT) % PROPOSAL_COUNT)
+
+  /* La tarjeta activa queda a la vista dentro de la fila */
+  useEffect(() => {
+    const row = cardsRef.current
+    const card = row?.children[active] as HTMLElement | undefined
+    if (row && card) {
+      row.scrollTo({ left: card.offsetLeft - row.offsetLeft - 20, behavior: 'smooth' })
+    }
+  }, [active])
+
+  return (
+    <section className="proposals-m" id="propuestas">
+      <p className="proposals-m__eyebrow">Nuestras propuestas</p>
+
+      <div className="proposals-m__intro" key={proposal.number}>
+        <p className="proposals-m__number">{proposal.number}</p>
+        <h2 className="proposals-m__title">{proposal.title.join(' ')}</h2>
+        <p className="proposals-m__subtitle">{proposal.subtitle}</p>
+      </div>
+
+      <div className="proposals-m__media">
+        <img key={proposal.image} src={IMAGES[proposal.image]} alt={proposal.alt} />
+      </div>
+
+      <div className="proposals-m__body">
+        {proposal.text.map((line) => (
+          <p key={line} className="proposals-m__text">
+            {line}
+          </p>
+        ))}
+
+        {proposal.measures.length > 0 && (
+          <ul className="proposals-m__list">
+            {proposal.measures.map((measure) => (
+              <li key={measure.title} className="proposals-m__item">
+                <img src={checkIcon} width="20" height="20" alt="" />
+                <p>
+                  <strong>{measure.title}</strong>
+                  <br />
+                  {measure.text}
+                  {measure.bullets?.map((bullet) => (
+                    <span key={bullet} className="proposals-m__bullet">
+                      {bullet}
+                    </span>
+                  ))}
+                </p>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
+      <div className="proposals-m__cards" ref={cardsRef}>
+        {PROPOSALS.map((card, index) => (
+          <button
+            key={card.number}
+            type="button"
+            className={`proposals-m__card${index === active ? ' proposals-m__card--active' : ''}`}
+            aria-pressed={index === active}
+            onClick={() => setActive(index)}
+          >
+            <span className="proposals-m__card-body">
+              <span className="proposals-m__card-number">{card.number}</span>
+              <span className="proposals-m__card-title">
+                {card.card[0]}
+                <br />
+                {card.card[1]}
+              </span>
+            </span>
+            <span className="proposals-m__card-media">
+              <img src={IMAGES[card.cardImage]} alt="" loading="lazy" />
+            </span>
+          </button>
+        ))}
+      </div>
+
+      <div className="proposals-m__nav">
+        <button
+          type="button"
+          className="proposals-m__arrow proposals-m__arrow--prev"
+          aria-label="Propuesta anterior"
+          onClick={() => go(-1)}
+        >
+          <ArrowIcon direction="prev" style={{ width: 16, height: 13.36 }} />
+        </button>
+        <span className="proposals-m__count">
+          {proposal.number} / 0{PROPOSAL_COUNT}
+        </span>
+        <button
+          type="button"
+          className="proposals-m__arrow proposals-m__arrow--next"
+          aria-label="Propuesta siguiente"
+          onClick={() => go(1)}
+        >
+          <ArrowIcon direction="next" style={{ width: 16, height: 13.36 }} />
+        </button>
+      </div>
+    </section>
+  )
+}
+
 function Proposals() {
-  const isLaptop = useIsLaptop()
+  const isMobile = useMediaQuery(MOBILE_QUERY)
+  return isMobile ? <ProposalsMobile /> : <ProposalsDesktop />
+}
+
+function ProposalsDesktop() {
+  const isLaptop = useMediaQuery(LAPTOP_QUERY)
   const [active, setActive] = useState(0)
   const variant = isLaptop ? 'laptop' : 'wide'
   const board: Board = LAYOUT[variant][active]

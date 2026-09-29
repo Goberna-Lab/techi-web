@@ -132,3 +132,125 @@
     padding-top: 4px;
   }
 }
+
+/* Botón de menú: solo en mobile */
+.header__menu {
+  display: none;
+}
+
+/* Mobile (hasta 767px): logo, botón Súmate y menú desplegable */
+@media (max-width: 767px) {
+  .header {
+    align-items: center;
+    width: 100%;
+    height: 64px;
+    padding: 0 16px;
+  }
+
+  .header__brand {
+    flex: 1 1 auto;
+    width: auto;
+    margin: 0;
+  }
+
+  .header__brand .brand {
+    zoom: 0.68;
+  }
+
+  .header__nav {
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    display: none;
+    width: auto;
+    margin: 0;
+    padding: 8px 16px 16px;
+    background: #ffffff;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.12);
+  }
+
+  .header--open .header__nav {
+    display: block;
+  }
+
+  .header__nav ul {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .header__nav li + li {
+    border-top: 1px solid #eef0f4;
+  }
+
+  .header__nav a {
+    padding: 8px 0;
+    font-size: 15px;
+    line-height: 32px;
+  }
+
+  .header__cta {
+    width: auto;
+    height: 40px;
+    margin: 0;
+    padding: 0 20px;
+    border-radius: 20px;
+    font-size: 14px;
+  }
+
+  .header__menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    flex: none;
+    width: 40px;
+    height: 40px;
+    margin-left: 8px;
+    padding: 0 9px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .header__menu span {
+    display: block;
+    height: 2px;
+    border-radius: 1px;
+    background: #13141d;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .header--open .header__menu span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .header--open .header__menu span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .header--open .header__menu span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+}
+
+/* Mobile chico (hasta 360px): logo y botón más compactos para que no se toquen */
+@media (max-width: 360px) {
+  .header {
+    padding: 0 12px;
+  }
+
+  .header__brand .brand {
+    zoom: 0.58;
+  }
+
+  .header__cta {
+    padding: 0 14px;
+    font-size: 13px;
+  }
+
+  .header__menu {
+    margin-left: 4px;
+  }
+}

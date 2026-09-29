@@ -262,3 +262,118 @@
     font-size: 9.3243px;
   }
 }
+
+/* Mobile (hasta 767px): marca y redes, el formulario a todo el ancho y la foto de Techi al final */
+@media (max-width: 767px) {
+  .footer {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    padding: 44px 20px 0;
+  }
+
+  /* Orden en mobile: marca y redes, formulario y la foto al final */
+  .footer__info {
+    order: 1;
+    width: auto;
+    margin: 0;
+    padding: 0;
+  }
+
+  .footer__form {
+    order: 2;
+  }
+
+  .footer__photo {
+    order: 3;
+  }
+
+  .footer__socials {
+    margin-top: 24px;
+  }
+
+  .footer__socials span {
+    font-size: 16px;
+  }
+
+  .footer__form {
+    width: 100%;
+    height: auto;
+    margin-top: 32px;
+    padding: 28px 20px;
+  }
+
+  .footer__row,
+  .footer__row--first {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .footer__row + .footer__row,
+  .footer__row:nth-child(5) {
+    margin-top: 20px;
+  }
+
+  .footer__field,
+  .footer__field--select,
+  .footer__field--message {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .footer__field label {
+    margin: 0;
+    font-size: 11px;
+    line-height: 14px;
+  }
+
+  .footer__field input,
+  .footer__field select,
+  .footer__field textarea,
+  .footer__row--first input {
+    height: auto;
+    margin-top: 8px;
+    padding: 6px 0 10px;
+    font-size: 14px;
+    line-height: 20px;
+    text-indent: 0;
+  }
+
+  .footer__field select {
+    background-position: right 2px center;
+  }
+
+  .footer__field textarea {
+    height: 64px;
+  }
+
+  .footer__submit {
+    justify-content: center;
+    width: 100%;
+    height: 48px;
+    margin: 28px 0 0;
+    padding: 0;
+    border-radius: 24px;
+    font-size: 13px;
+  }
+
+  .footer__photo {
+    position: relative;
+    top: auto;
+    left: auto;
+    z-index: 1;
+    align-self: center;
+    width: min(88vw, 400px);
+    height: auto;
+    margin-top: 32px;
+  }
+
+  .footer__arc {
+    top: auto;
+    bottom: 0;
+    left: 50%;
+    width: min(110vw, 560px);
+    height: auto;
+    transform: translateX(-50%);
+  }
+}

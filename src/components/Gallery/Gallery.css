@@ -154,3 +154,67 @@
     height: 245px;
   }
 }
+
+/* Mobile (hasta 767px): la foto grande arriba y las cuatro en 2x2 */
+@media (max-width: 767px) {
+  .gallery {
+    width: 100%;
+    height: auto;
+    padding: 48px 20px;
+  }
+
+  .gallery__eyebrow {
+    padding-left: 48px;
+    font-size: 15px;
+  }
+
+  .gallery__eyebrow::before {
+    left: 0;
+  }
+
+  .gallery__title {
+    margin-top: 16px;
+    font-size: 28px;
+    line-height: 32px;
+  }
+
+  .gallery__text {
+    margin-top: 10px;
+    font-size: 16px;
+    line-height: 24px;
+    white-space: normal;
+  }
+
+  .gallery__grid {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .gallery__main {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+  }
+
+  .gallery__main img {
+    position: static;
+    width: 100%;
+    height: 100%;
+    object-position: 57% center;
+  }
+
+  .gallery__photos {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: auto;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .gallery__photos img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 461 / 305;
+    border-radius: 12px;
+  }
+}

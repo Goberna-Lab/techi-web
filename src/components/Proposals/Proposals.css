@@ -135,3 +135,285 @@
   top: 9.73px;
   left: 8.96px;
 }
+
+/* Mobile (hasta 767px): número, título y foto; luego el texto y las medidas; las tarjetas en una fila que se desliza */
+.proposals-m {
+  padding: 48px 0 52px;
+  background: #ffffff;
+  color: #13141d;
+}
+
+.proposals-m__eyebrow {
+  position: relative;
+  margin: 0 20px;
+  padding-left: 48px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 32px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #e10803;
+}
+
+.proposals-m__eyebrow::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 0;
+  width: 36px;
+  height: 2px;
+  background: #e10803;
+}
+
+.proposals-m__intro {
+  margin: 20px 20px 0;
+}
+
+.proposals-m__number {
+  position: relative;
+  margin: 0;
+  padding-bottom: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 38px;
+  color: #e10803;
+}
+
+.proposals-m__number::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 44px;
+  height: 2px;
+  background: #e10803;
+}
+
+.proposals-m__title {
+  margin: 16px 0 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 30px;
+  text-transform: uppercase;
+}
+
+.proposals-m__subtitle {
+  margin: 8px 0 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.proposals-m__media {
+  margin: 20px 20px 0;
+  overflow: hidden;
+  border-radius: 16px;
+  aspect-ratio: 737 / 660;
+}
+
+.proposals-m__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.proposals-m__body {
+  margin: 20px 20px 0;
+}
+
+.proposals-m__text {
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+  font-size: 17px;
+  line-height: 26px;
+}
+
+.proposals-m__text + .proposals-m__text {
+  margin-top: 6px;
+}
+
+.proposals-m__list {
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.proposals-m__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.proposals-m__item + .proposals-m__item {
+  margin-top: 18px;
+}
+
+.proposals-m__item img {
+  display: block;
+  flex: none;
+  margin-top: 2px;
+}
+
+.proposals-m__item p {
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.proposals-m__item strong {
+  font-weight: 700;
+}
+
+.proposals-m__bullet {
+  display: block;
+  margin-top: 8px;
+}
+
+/* Fila de tarjetas: se desliza con el dedo y se detiene en cada tarjeta */
+.proposals-m__cards {
+  display: flex;
+  gap: 12px;
+  margin-top: 32px;
+  padding: 4px 20px 8px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 20px;
+  scrollbar-width: none;
+}
+
+.proposals-m__cards::-webkit-scrollbar {
+  display: none;
+}
+
+.proposals-m__card {
+  position: relative;
+  display: flex;
+  flex: none;
+  width: 260px;
+  height: 104px;
+  padding: 0;
+  border: 0;
+  border-radius: 10px;
+  background: #ffffff;
+  font: inherit;
+  text-align: left;
+  color: #13141d;
+  cursor: pointer;
+  scroll-snap-align: start;
+}
+
+.proposals-m__card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border: 1px solid #bebebe;
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+.proposals-m__card--active::after {
+  border: 2px solid #e10803;
+}
+
+.proposals-m__card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: none;
+  width: 130px;
+  padding: 0 10px 0 12px;
+}
+
+.proposals-m__card-number {
+  position: relative;
+  align-self: flex-start;
+  padding-bottom: 3px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  color: #e10803;
+}
+
+.proposals-m__card-number::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 20px;
+  height: 2px;
+  background: #e10803;
+}
+
+.proposals-m__card-title {
+  margin-top: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 14px;
+  text-transform: uppercase;
+}
+
+.proposals-m__card-media {
+  flex: 1 1 auto;
+  overflow: hidden;
+  border-radius: 0 10px 10px 0;
+}
+
+.proposals-m__card-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.proposals-m__nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.proposals-m__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.proposals-m__arrow svg {
+  display: block;
+}
+
+.proposals-m__arrow--prev {
+  background: #ffffff;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16);
+  color: #454a50;
+}
+
+.proposals-m__arrow--next {
+  background: #e10803;
+  color: #ffffff;
+}
+
+.proposals-m__count {
+  min-width: 64px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  color: #13141d;
+}
