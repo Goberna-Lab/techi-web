@@ -24,13 +24,17 @@ function AboutTechi() {
           <br />
           28 años haciendo de Surquillo su hogar.
           <br />
-          María Teresa Maestre Mejía ha construido aquí su familia, su trayectoria y su compromiso con
-          <br />
+          María Teresa Maestre Mejía ha construido aquí su familia, su trayectoria y{' '}
+          <br className="br-laptop" />
+          su compromiso con{' '}
+          <br className="br-wide" />
           las personas.
           <br />
           <br />
-          Con más de 30 años de experiencia profesional, hoy decide poner su capacidad de gestión al
-          <br />
+          Con más de 30 años de experiencia profesional, hoy decide poner su{' '}
+          <br className="br-laptop" />
+          capacidad de gestión al{' '}
+          <br className="br-wide" />
           servicio del distrito que eligió para vivir.
         </p>
 

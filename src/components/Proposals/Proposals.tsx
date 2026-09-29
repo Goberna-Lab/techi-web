@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useSyncExternalStore } from 'react'
+import type { CSSProperties } from 'react'
 import surquilloSeguro from '../../assets/proposals/surquillo-seguro.webp'
 import surquilloPreparado from '../../assets/proposals/surquillo-preparado.webp'
 import surquilloLimpio from '../../assets/proposals/surquillo-limpio.webp'
@@ -15,296 +16,81 @@ import cardEspacios from '../../assets/proposals/card-espacios.webp'
 import cardFuturo from '../../assets/proposals/card-futuro.webp'
 import checkIcon from '../../assets/proposals/check.svg'
 import cardArrow from '../../assets/proposals/card-arrow.svg'
+import { CHECK_SIZE, LAYOUT } from './proposalsLayout'
+import type { Board, Card, Line, Nav, Rule } from './proposalsLayout'
 import './Proposals.css'
 
-type Measure = {
-  title: string
-  text: string
-  bullets?: string[]
+const IMAGES: Record<string, string> = {
+  'surquillo-seguro': surquilloSeguro,
+  'surquillo-preparado': surquilloPreparado,
+  'surquillo-limpio': surquilloLimpio,
+  'surquillo-ordenado': surquilloOrdenado,
+  'surquillo-pet-friendly': surquilloPetFriendly,
+  'surquillo-oportunidades': surquilloOportunidades,
+  'surquillo-espacios': surquilloEspacios,
+  'surquillo-futuro': surquilloFuturo,
+  'card-limpio': cardLimpio,
+  'card-ordenado': cardOrdenado,
+  'card-pet-friendly': cardPetFriendly,
+  'card-oportunidades': cardOportunidades,
+  'card-espacios': cardEspacios,
+  'card-futuro': cardFuturo,
 }
 
-type Proposal = {
-  number: string
-  /** Rótulo de la tarjeta, en dos renglones como en XD */
-  card: [string, string]
-  /** La tarjeta 07 va en 12px en XD porque su rótulo es más largo */
-  cardSmall?: boolean
-  title: string[]
-  /** Solo la 08 lleva el número grande sobre el título */
-  showNumber?: boolean
-  subtitle: string
-  text: string[]
-  /** La 08 no tiene medidas: su párrafo es una lista a 38px de interlínea */
-  textLoose?: boolean
-  measures: Measure[]
-  image: string
-  alt: string
-  /** Posición de la foto dentro de la máscara 737x660, tal cual cada artboard de XD */
-  crop: { x: number; y: number; w: number; h: number }
-  /** x del párrafo respecto del título (0 o 6px según el artboard) */
-  textX: number
-  /** y del párrafo y de la lista en el artboard (la sección empieza en 3859) */
-  textTop: number
-  listTop?: number
-  /** Fotos de las 4 tarjetas visibles cuando esta propuesta está activa, tal cual su artboard */
-  thumbs: [string, string, string, string]
-  /** Tarjetas (0–3) cuyo número y rótulo van 19px más abajo en este artboard */
-  lowCards?: number[]
-  /** En los artboards 05–07 la tarjeta 08 dice «Surquillo Ordenado» */
-  lastCard?: [string, string]
+const ALTS: Record<string, string> = {
+  'surquillo-seguro': 'Central de video vigilancia de Surquillo con serenazgo',
+  'surquillo-preparado': 'Enfermera tomando la presión a una vecina adulta mayor',
+  'surquillo-limpio': 'Personal de limpieza lavando una calle de Surquillo',
+  'surquillo-ordenado': 'Parque ordenado con glorieta y bancas en Surquillo',
+  'surquillo-pet-friendly': 'Vecina con su perro en una campaña veterinaria de Surquillo',
+  'surquillo-oportunidades': 'Emprendedores de Surquillo reunidos en un taller',
+  'surquillo-espacios': 'Niños jugando en una losa deportiva de Surquillo',
+  'surquillo-futuro': 'Vista aérea de Surquillo',
 }
 
-const PROPOSALS: Proposal[] = [
-  {
-    number: '01',
-    card: ['Surquillo', 'Seguro'],
-    title: ['Surquillo seguro'],
-    subtitle: 'Más seguridad y tranquilidad para nuestras familias',
-    text: [
-      'La seguridad de nuestros vecinos será una prioridad. Trabajaremos para recuperar la tranquilidad en nuestras calles con mayor prevención, tecnología y coordinación.',
-    ],
-    measures: [
-      {
-        title: 'Más serenazgo en las calles:',
-        text: 'Duplicaremos la presencia de serenazgo para fortalecer la vigilancia y brindar una respuesta más rápida ante cualquier emergencia.',
-      },
-      {
-        title: 'Patrullaje integrado con la Policía Nacional:',
-        text: 'Implementaremos un trabajo coordinado entre serenazgo y policía para reforzar la seguridad en todo el distrito.',
-      },
-      {
-        title: 'Serenos mejor preparados:',
-        text: 'Capacitaremos a nuestros agentes en preparación física, defensa personal y manejo seguro de situaciones de riesgo.',
-      },
-      {
-        title: 'Más iluminación para calles seguras:',
-        text: 'Instalaremos iluminación LED en las zonas con menor iluminación para recuperar espacios públicos.',
-      },
-      {
-        title: 'Cámaras con inteligencia artificial:',
-        text: 'Implementaremos tecnología de monitoreo inteligente para prevenir y detectar hechos delictivos.',
-      },
-    ],
-    image: surquilloSeguro,
-    alt: 'Central de video vigilancia de Surquillo con serenazgo',
-    crop: { x: -115, y: -3, w: 1023, h: 682 },
-    textX: 0,
-    textTop: 4164,
-    listTop: 4268,
-    thumbs: [surquilloSeguro, surquilloPreparado, cardLimpio, surquilloSeguro],
-  },
-  {
-    number: '02',
-    card: ['Surquillo', 'Preparado'],
-    title: ['Surquillo preparado'],
-    subtitle: 'Un distrito listo ante cualquier emergencia',
-    text: [
-      'Surquillo debe estar preparado para responder rápidamente frente a terremotos u otras situaciones de emergencia.',
-    ],
-    measures: [
-      {
-        title: 'Almacenes subterráneos de emergencia:',
-        text: 'Crearemos puntos estratégicos de abastecimiento en lugares como el estadio municipal, parques y canchitas.',
-      },
-      {
-        title: 'Equipamiento para emergencias:',
-        text: 'Estos espacios contarán con alimentos no perecibles, agua, botiquines y herramientas de rescate para atender rápidamente a nuestros vecinos.',
-      },
-    ],
-    image: surquilloPreparado,
-    alt: 'Enfermera tomando la presión a una vecina adulta mayor',
-    crop: { x: -193, y: -21, w: 1051, h: 681 },
-    textX: 6,
-    textTop: 4164,
-    listTop: 4266,
-    thumbs: [surquilloSeguro, surquilloPreparado, cardLimpio, surquilloSeguro],
-  },
-  {
-    number: '03',
-    card: ['Surquillo', 'Limpio'],
-    title: ['Surquillo limpio'],
-    subtitle: 'Calles limpias y espacios públicos recuperados',
-    text: ['Trabajaremos por un distrito más limpio, ordenado y saludable para todos.'],
-    measures: [
-      {
-        title: 'Contenedores subterráneos de residuos:',
-        text: 'Instalaremos contenedores de basura subterráneos en puntos estratégicos para mejorar la limpieza urbana.',
-      },
-      {
-        title: 'Recojo especial para comercios:',
-        text: 'Implementaremos horarios diferenciados para establecimientos que generan residuos fuera del horario tradicional.',
-      },
-      {
-        title: 'Lavado periódico de calles:',
-        text: 'Realizaremos jornadas de lavado de calles con camión cisterna para mantener espacios públicos en mejores condiciones.',
-      },
-    ],
-    image: surquilloLimpio,
-    alt: 'Personal de limpieza lavando una calle de Surquillo',
-    crop: { x: -163, y: 0, w: 990, h: 660 },
-    textX: 0,
-    textTop: 4164,
-    listTop: 4238,
-    thumbs: [surquilloSeguro, surquilloPreparado, cardLimpio, surquilloSeguro],
-  },
-  {
-    number: '04',
-    card: ['Surquillo', 'Ordenado'],
-    title: ['Surquillo ordenado'],
-    subtitle: 'Mejor tránsito y recuperación del espacio público',
-    text: ['Ordenaremos las calles para que vecinos y visitantes puedan movilizarse mejor.'],
-    measures: [
-      {
-        title: 'Mayor fiscalización del tránsito:',
-        text: 'Reforzaremos la presencia de fiscalizadores en los puntos de mayor congestión.',
-      },
-      {
-        title: 'Ordenamiento del transporte público:',
-        text: 'Controlaremos paraderos y maniobras indebidas que generan tráfico y desorden.',
-      },
-      {
-        title: 'Estacionamientos subterráneos en concesión:',
-        text: 'Impulsaremos alternativas para liberar las calles de vehículos estacionados y mejorar la circulación.',
-      },
-    ],
-    image: surquilloOrdenado,
-    alt: 'Parque ordenado con glorieta y bancas en Surquillo',
-    crop: { x: -325, y: 10, w: 1155, h: 650 },
-    textX: 6,
-    textTop: 4164,
-    listTop: 4266,
-    thumbs: [surquilloSeguro, surquilloSeguro, surquilloSeguro, cardOrdenado],
-  },
-  {
-    number: '05',
-    card: ['Surquillo pet', 'Friendly'],
-    title: ['Surquillo pet friendly'],
-    subtitle: 'Un distrito que también cuida a sus mascotas',
-    text: ['Nuestros animales de compañía también forman parte de nuestras familias.'],
-    measures: [
-      {
-        title: 'Veterinaria Municipal 24 horas:',
-        text: 'Implementaremos atención veterinaria permanente para nuestras mascotas.',
-      },
-      {
-        title: 'Registro municipal de mascotas:',
-        text: 'Realizaremos un censo con identificación mediante microchip para ayudar a encontrar mascotas extraviadas.',
-      },
-    ],
-    image: surquilloPetFriendly,
-    alt: 'Vecina con su perro en una campaña veterinaria de Surquillo',
-    crop: { x: -192, y: 0, w: 990, h: 660 },
-    textX: 6,
-    textTop: 4164,
-    listTop: 4238,
-    thumbs: [cardPetFriendly, surquilloSeguro, cardEspacios, surquilloSeguro],
-    lowCards: [2, 3],
-    lastCard: ['Surquillo', 'Ordenado'],
-  },
-  {
-    number: '06',
-    card: ['Surquillo con', 'Oportunidades'],
-    title: ['Surquillo con oportunidades'],
-    subtitle: 'Más apoyo para emprendedores, jóvenes y trabajadores',
-    text: [
-      'Impulsaremos un distrito donde las personas puedan crecer y generar nuevas oportunidades.',
-    ],
-    measures: [
-      {
-        title: 'Ordenamiento del comercio ambulatorio:',
-        text: 'Trabajaremos para organizar el comercio informal sin quitar la fuente de ingreso de quienes buscan salir adelante.',
-      },
-      {
-        title: 'Municipalidad digital:',
-        text: 'Digitalizaremos los trámites para facilitar procesos, ahorrar tiempo y reducir espacios para la corrupción.',
-      },
-      {
-        title: 'Capacitación para emprendedores y comerciantes:',
-        text: 'Brindaremos herramientas para mejorar negocios y fortalecer la economía local.',
-      },
-      {
-        title: 'Programa para jóvenes emprendedores:',
-        text: 'Capacitaremos a nuestros jóvenes para que puedan desarrollar proyectos y nuevas oportunidades.',
-      },
-    ],
-    image: surquilloOportunidades,
-    alt: 'Emprendedores de Surquillo reunidos en un taller',
-    crop: { x: -169, y: 0, w: 990, h: 660 },
-    textX: 6,
-    textTop: 4164,
-    listTop: 4238,
-    thumbs: [surquilloSeguro, cardOportunidades, cardEspacios, surquilloSeguro],
-    lowCards: [0, 1, 2, 3],
-    lastCard: ['Surquillo', 'Ordenado'],
-  },
-  {
-    number: '07',
-    card: ['Surquillo con', 'Espacios para todos'],
-    cardSmall: true,
-    title: ['Surquillo con espacios', 'para todos'],
-    subtitle: 'Recuperemos nuestros espacios para la comunidad',
-    text: [
-      'Nuestros espacios públicos deben volver a ser lugares de encuentro, aprendizaje y desarrollo.',
-    ],
-    measures: [
-      {
-        title: 'Recuperación del Estadio Municipal',
-        text: 'Transformaremos el estadio municipal en un espacio al servicio de los vecinos con:',
-        bullets: [
-          '-Talleres deportivos gratuitos.',
-          '-Actividades culturales.',
-          '-Programas de capacitación.',
-          '-Espacios de integración para niños, jóvenes y adultos',
-        ],
-      },
-    ],
-    image: surquilloEspacios,
-    alt: 'Niños jugando en una losa deportiva de Surquillo',
-    crop: { x: -157, y: -16, w: 1014, h: 676 },
-    textX: 0,
-    textTop: 4204,
-    listTop: 4278,
-    thumbs: [surquilloSeguro, surquilloSeguro, cardEspacios, surquilloSeguro],
-    lowCards: [0, 1, 2, 3],
-    lastCard: ['Surquillo', 'Ordenado'],
-  },
-  {
-    number: '08',
-    card: ['Surquillo tiene', 'Futuro'],
-    title: ['Surquillo tiene futuro'],
-    showNumber: true,
-    subtitle: 'Una gestión cercana, moderna y al servicio de sus vecinos',
-    text: [
-      'Trabajaremos por un distrito más:',
-      '-Seguro',
-      '-limpio',
-      '-Ordenado',
-      '-Oportunidades para todas las familias.',
-    ],
-    textLoose: true,
-    measures: [],
-    image: surquilloFuturo,
-    alt: 'Vista aérea de Surquillo',
-    crop: { x: -227, y: -11, w: 1192, h: 671 },
-    textX: 0,
-    textTop: 4256,
-    thumbs: [surquilloSeguro, surquilloSeguro, cardEspacios, cardFuturo],
-    lowCards: [2],
-  },
-]
+const PROPOSAL_COUNT = 8
 
-const PAGE_SIZE = 4
-/** y de la columna de texto en el artboard: los párrafos y listas se ubican desde acá */
-const INFO_TOP = 4056
+/* Ascendente y descendente de cada fuente (en em): ubican cada renglón en la misma línea base que en XD */
+const ASCENT: Record<string, number> = {
+  Poppins: 1.05,
+  Nunito: 1.011,
+  Inter: 0.969,
+  Raleway: 0.94,
+  Montserrat: 0.968,
+  'Open Sans': 1.069,
+}
+const DESCENT: Record<string, number> = {
+  Poppins: 0.35,
+  Nunito: 0.353,
+  Inter: 0.241,
+  Raleway: 0.234,
+  Montserrat: 0.251,
+  'Open Sans': 0.293,
+}
 
-function ArrowIcon({ direction }: { direction: 'prev' | 'next' }) {
+/* Laptop 1366: su propio XD (1366x620) */
+const LAPTOP_QUERY = '(width: 1366px)'
+
+function subscribeLaptop(onChange: () => void) {
+  const query = window.matchMedia(LAPTOP_QUERY)
+  query.addEventListener('change', onChange)
+  return () => query.removeEventListener('change', onChange)
+}
+
+function useIsLaptop() {
+  return useSyncExternalStore(
+    subscribeLaptop,
+    () => window.matchMedia(LAPTOP_QUERY).matches,
+    () => false,
+  )
+}
+
+function ArrowIcon({ direction, style }: { direction: 'prev' | 'next'; style: CSSProperties }) {
   return (
     <svg
       viewBox="50.92 55.115 10.5 8.75"
-      width="19.39"
-      height="16.19"
       aria-hidden="true"
-      style={direction === 'prev' ? { transform: 'scaleX(-1)' } : undefined}
+      style={direction === 'prev' ? { ...style, transform: 'scaleX(-1)' } : style}
     >
       <path
         d="M 51.01 59.378 C 51.01 59.749 51.312 60.051 51.684 60.051 L 59.034 60.051 L 56.594 62.492 C 56.322 62.746 56.307 63.172 56.56 63.444 C 56.813 63.716 57.239 63.731 57.511 63.477 C 57.523 63.467 57.534 63.455 57.545 63.444 L 61.135 59.853 C 61.398 59.591 61.398 59.165 61.135 58.902 L 57.545 55.312 C 57.273 55.058 56.847 55.073 56.594 55.345 C 56.353 55.604 56.353 56.004 56.594 56.263 L 59.034 58.704 L 51.684 58.704 C 51.312 58.704 51.01 59.006 51.01 59.378"
@@ -314,135 +100,211 @@ function ArrowIcon({ direction }: { direction: 'prev' | 'next' }) {
   )
 }
 
-function Proposals() {
-  const [active, setActive] = useState(0)
-  const proposal = PROPOSALS[active]
-  const pageStart = Math.floor(active / PAGE_SIZE) * PAGE_SIZE
-  const pageCards = PROPOSALS.slice(pageStart, pageStart + PAGE_SIZE)
+/* Un renglón de XD: posición absoluta con su línea base exacta; cada tramo con su estilo */
+function TextLine({ line, heading }: { line: Line; heading?: boolean }) {
+  const first = line.runs[0]
+  const ascent = ASCENT[first.f] ?? 1
+  const descent = DESCENT[first.f] ?? 0.3
+  return (
+    <span
+      className="proposals__line"
+      role={heading ? 'heading' : undefined}
+      aria-level={heading ? 2 : undefined}
+      style={{
+        left: line.x,
+        top: line.base - ascent * first.s,
+        lineHeight: `${(ascent + descent) * first.s}px`,
+      }}
+    >
+      {line.runs.map((run, index) => (
+        <span
+          key={index}
+          className={run.f === 'Inter' ? 'proposals__run proposals__run--inter' : 'proposals__run'}
+          style={{
+            fontFamily: `'${run.f}', sans-serif`,
+            fontWeight: run.w,
+            fontSize: run.s,
+            color: run.c,
+            letterSpacing: run.ls || undefined,
+          }}
+        >
+          {run.t}
+        </span>
+      ))}
+    </span>
+  )
+}
 
-  const go = (step: number) => setActive((current) => (current + step + PROPOSALS.length) % PROPOSALS.length)
+function RuleBar({ rule }: { rule: Rule }) {
+  return (
+    <span
+      className="proposals__rule"
+      style={{ left: rule.x, top: rule.y, width: rule.w, height: rule.h, background: rule.c }}
+    />
+  )
+}
+
+function NavButton({ nav, direction, onClick }: { nav: Nav; direction: 'prev' | 'next'; onClick: () => void }) {
+  return (
+    <button
+      type="button"
+      className={`proposals__arrow${nav.shadow ? ' proposals__arrow--shadow' : ''}`}
+      aria-label={direction === 'prev' ? 'Propuesta anterior' : 'Propuesta siguiente'}
+      onClick={onClick}
+      style={{
+        left: nav.x,
+        top: nav.y,
+        width: nav.d,
+        height: nav.d,
+        background: nav.red ? '#e10803' : '#ffffff',
+        color: nav.glyph.c,
+      }}
+    >
+      <ArrowIcon
+        direction={direction}
+        style={{ left: nav.glyph.x, top: nav.glyph.y, width: nav.glyph.w, height: nav.glyph.h }}
+      />
+    </button>
+  )
+}
+
+function ProposalCard({
+  card,
+  offsetX,
+  offsetY,
+  isActive,
+  onSelect,
+}: {
+  card: Card
+  offsetX: number
+  offsetY: number
+  isActive: boolean
+  onSelect: () => void
+}) {
+  return (
+    <button
+      type="button"
+      className={`proposal-card${card.bg ? ' proposal-card--bg' : ''}`}
+      aria-pressed={isActive}
+      aria-label={card.lines
+        .slice(1)
+        .map((line) => line.runs.map((run) => run.t).join(''))
+        .join(' ')}
+      onClick={onSelect}
+      style={{ left: card.x - offsetX, top: card.y - offsetY }}
+    >
+      {card.thumb && (
+        <span className="proposal-card__media" style={{ left: card.thumb.clipX, width: card.thumb.clipW }}>
+          <img
+            src={IMAGES[card.thumb.src]}
+            alt=""
+            style={{ left: card.thumb.x, top: card.thumb.y, width: card.thumb.w, height: card.thumb.h }}
+          />
+        </span>
+      )}
+      {card.lines.map((line, index) => (
+        <TextLine key={index} line={line} />
+      ))}
+      {card.rule && <RuleBar rule={card.rule} />}
+      {card.arrowAt && (
+        <span
+          className="proposal-card__arrow"
+          style={{ left: card.arrowAt.x, top: card.arrowAt.y, width: card.arrowAt.d, height: card.arrowAt.d }}
+        >
+          <img src={cardArrow} width="9.46" height="7.9" alt="" />
+        </span>
+      )}
+    </button>
+  )
+}
+
+function Proposals() {
+  const isLaptop = useIsLaptop()
+  const [active, setActive] = useState(0)
+  const variant = isLaptop ? 'laptop' : 'wide'
+  const board: Board = LAYOUT[variant][active]
+  const checkSize = CHECK_SIZE[variant]
+  const [prevNav, nextNav] = board.nav
+  const strip = board.strip
+  const cardsTop = board.cards[0]?.y ?? 0
+
+  const go = (step: number) => setActive((current) => (current + step + PROPOSAL_COUNT) % PROPOSAL_COUNT)
+
+  /* El título es el renglón de 32/40px en ExtraBold que no es el número */
+  const isHeading = (line: Line) =>
+    line.runs[0].w === 800 && line.runs[0].s >= 32 && !/^0\d$/.test(line.runs[0].t)
+
+  /* En 1366 las tarjetas van dentro de la tira (recortada al ancho visible); en 1920, sueltas en la sección */
+  const offsetX = strip ? strip.x : 0
+  const offsetY = strip ? cardsTop : 0
+
+  const cards = (
+    <>
+      {board.cards.map((card) => (
+        <ProposalCard
+          key={card.number}
+          card={card}
+          offsetX={offsetX}
+          offsetY={offsetY}
+          isActive={card.number === board.active}
+          onSelect={() => setActive(Number(card.number) - 1)}
+        />
+      ))}
+      {board.activeAt && (
+        <span
+          className="proposal-card__outline"
+          style={{ left: board.activeAt.x - offsetX, top: board.activeAt.y - offsetY }}
+        />
+      )}
+    </>
+  )
 
   return (
-    <section className="proposals" id="propuestas">
-      <p className="proposals__eyebrow">Nuestras propuestas</p>
+    <section className={`proposals proposals--${variant}`} id="propuestas" style={{ height: board.height }}>
+      {board.lines.map((line, index) => (
+        <TextLine key={`${active}-${index}`} line={line} heading={isHeading(line)} />
+      ))}
+      {board.rules.map((rule, index) => (
+        <RuleBar key={index} rule={rule} />
+      ))}
+      {board.checks.map((check, index) => (
+        <img
+          key={index}
+          className="proposals__check"
+          src={checkIcon}
+          alt=""
+          style={{ left: check.x, top: check.y, width: checkSize, height: checkSize }}
+        />
+      ))}
 
-      <div className="proposals__main">
-        <div className="proposals__info" key={proposal.number}>
-          <div
-            className={`proposals__intro${proposal.title.length > 1 || proposal.showNumber ? ' proposals__intro--tall' : ''}`}
-          >
-            {proposal.showNumber && <p className="proposals__number">{proposal.number}</p>}
-            <h2 className="proposals__heading">
-              {proposal.title.map((line, index) => (
-                <span key={line}>
-                  {index > 0 && <br />}
-                  {line}
-                </span>
-              ))}
-            </h2>
-            <p className="proposals__subtitle">{proposal.subtitle}</p>
-            <p
-              className={`proposals__text${proposal.textLoose ? ' proposals__text--loose' : ''}`}
-              style={{ top: proposal.textTop - INFO_TOP, left: proposal.textX }}
-            >
-              {proposal.text.map((line, index) => (
-                <span key={line}>
-                  {index > 0 && <br />}
-                  {line}
-                </span>
-              ))}
-            </p>
-          </div>
-
-          {proposal.measures.length > 0 && (
-            <ul className="proposals__list" style={{ top: (proposal.listTop ?? 0) - INFO_TOP }}>
-              {proposal.measures.map((measure) => (
-                <li key={measure.title} className="proposals__item">
-                  <img src={checkIcon} width="24" height="24" alt="" />
-                  <p>
-                    <strong>{measure.title}</strong>
-                    <br />
-                    {measure.text}
-                    {measure.bullets?.map((bullet) => (
-                      <span key={bullet} className="proposals__bullet">
-                        {bullet}
-                      </span>
-                    ))}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-
-        <div className="proposals__media">
-          <img
-            key={proposal.number}
-            src={proposal.image}
-            alt={proposal.alt}
-            style={{
-              left: proposal.crop.x,
-              top: proposal.crop.y,
-              width: proposal.crop.w,
-              height: proposal.crop.h,
-            }}
-          />
-        </div>
+      <div
+        className="proposals__media"
+        style={{
+          left: board.media.clip[0],
+          top: board.media.clip[1],
+          width: board.media.clip[2],
+          height: board.media.clip[3],
+          borderRadius: board.media.clip[4],
+        }}
+      >
+        <img
+          key={board.media.src}
+          src={IMAGES[board.media.src]}
+          alt={ALTS[board.media.src]}
+          style={{ left: board.media.x, top: board.media.y, width: board.media.w, height: board.media.h }}
+        />
       </div>
 
-      <div className="proposals__nav">
-        <button
-          type="button"
-          className="proposals__arrow proposals__arrow--prev"
-          aria-label="Propuesta anterior"
-          onClick={() => go(-1)}
-        >
-          <ArrowIcon direction="prev" />
-        </button>
+      {prevNav && <NavButton nav={prevNav} direction="prev" onClick={() => go(-1)} />}
+      {nextNav && <NavButton nav={nextNav} direction="next" onClick={() => go(1)} />}
 
-        <div className="proposals__cards">
-          {pageCards.map((card, slot) => {
-            const index = PROPOSALS.indexOf(card)
-            const isActive = index === active
-            const label = slot === PAGE_SIZE - 1 && proposal.lastCard ? proposal.lastCard : card.card
-            return (
-              <button
-                key={card.number}
-                type="button"
-                className={`proposal-card${isActive ? ' proposal-card--active' : ''}${proposal.lowCards?.includes(slot) ? ' proposal-card--low' : ''}`}
-                aria-pressed={isActive}
-                onClick={() => setActive(index)}
-              >
-                <span className="proposal-card__body">
-                  <span className="proposal-card__number">{card.number}</span>
-                  <span
-                    className={`proposal-card__title${card.cardSmall ? ' proposal-card__title--small' : ''}`}
-                  >
-                    {label[0]}
-                    <br />
-                    {label[1]}
-                  </span>
-                  <span className="proposal-card__arrow">
-                    <img src={cardArrow} width="9.46" height="7.9" alt="" />
-                  </span>
-                </span>
-                <span className="proposal-card__media">
-                  <img src={proposal.thumbs[slot]} alt="" loading="lazy" />
-                </span>
-              </button>
-            )
-          })}
+      {strip ? (
+        <div className="proposals__strip" style={{ left: strip.x, top: cardsTop, width: strip.w }}>
+          {cards}
         </div>
-
-        <button
-          type="button"
-          className="proposals__arrow proposals__arrow--next"
-          aria-label="Propuesta siguiente"
-          onClick={() => go(1)}
-        >
-          <ArrowIcon direction="next" />
-        </button>
-      </div>
+      ) : (
+        cards
+      )}
     </section>
   )
 }

@@ -114,3 +114,82 @@
   margin-top: 11.2px;
   line-height: 32px;
 }
+
+/* Laptop 1366 (XD 1366x620: y 1294.2 → 1948) */
+@media (width: 1366px) {
+  .experience {
+    width: 1366px;
+    height: 653.8px;
+    padding-top: 80.8px;
+  }
+
+  /* Tarjeta 1206x479 en (80, 1375) */
+  .experience__card {
+    width: 1206px;
+    height: 479px;
+    margin-left: 80px;
+    padding-top: 71.7px;
+  }
+
+  /* Centrado en x 687 (centro de la tarjeta: 683) */
+  .experience__title {
+    padding-left: 8px;
+    font-size: 38px;
+    line-height: 38px;
+  }
+
+  .experience__items {
+    margin-top: 29.3px;
+  }
+
+  /* Columnas de 321 en x 117 / 529 / 933 */
+  .experience__item {
+    width: 321px;
+  }
+
+  .experience__item--surquillo {
+    margin-left: 37px;
+  }
+
+  .experience__item--trayectoria {
+    margin-left: 91px;
+  }
+
+  .experience__item--servicio {
+    margin-left: 83px;
+  }
+
+  /* Círculos de 113 en x 213 / 619 / 1037 */
+  .experience__icon {
+    width: 113px;
+    height: 113px;
+  }
+
+  .experience__item--surquillo .experience__icon {
+    margin-left: 96px;
+  }
+
+  .experience__item--trayectoria .experience__icon {
+    margin-left: 90px;
+  }
+
+  .experience__item--servicio .experience__icon {
+    margin-left: 104px;
+  }
+
+  /* Poppins SemiBold 22, baseline 1704 */
+  .experience__item-title {
+    margin-top: 14.8px;
+    font-size: 22px;
+    line-height: 33px;
+  }
+
+  /* Nunito 20, baseline 1743 */
+  .experience__item-text {
+    margin-top: 9.62px;
+  }
+
+  .experience__item-text--tall {
+    margin-top: 7.62px;
+  }
+}

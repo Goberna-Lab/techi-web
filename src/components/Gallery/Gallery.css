@@ -40,7 +40,7 @@
 }
 
 .gallery__text {
-  margin: 21.8px 0 0;
+  margin: 20.22px 0 0;
   font-family: 'Nunito', sans-serif;
   font-size: 24px;
   font-weight: 400;
@@ -52,7 +52,7 @@
   display: flex;
   align-items: flex-start;
   gap: 30px;
-  margin-top: 79.4px;
+  margin-top: 80.98px;
 }
 
 /* Máscara 520x642 r16; imagen 963x642 desplazada -293px */
@@ -88,4 +88,69 @@
   height: 305px;
   border-radius: 16px;
   object-fit: cover;
+}
+
+/* Laptop 1366 (XD 1366x620: sección de 838 de alto) */
+@media (width: 1366px) {
+  .gallery {
+    width: 1366px;
+    height: 838px;
+    padding: 62.7px 0 0 80px;
+  }
+
+  .gallery__eyebrow,
+  .gallery__title,
+  .gallery__text {
+    margin-left: 1px;
+  }
+
+  /* Línea roja 28.5x2 en x 45.4 */
+  .gallery__eyebrow::before {
+    top: 16.3px;
+    left: -35.6px;
+    width: 28.5px;
+  }
+
+  /* Poppins ExtraBold 28, baseline a 101.4 del eyebrow */
+  .gallery__title {
+    margin-top: 38.5px;
+    font-size: 28px;
+    line-height: 22px;
+  }
+
+  .gallery__text {
+    margin-top: 16.2px;
+    font-size: 17px;
+    line-height: 20px;
+  }
+
+  .gallery__grid {
+    gap: 25px;
+    margin-top: 41.6px;
+  }
+
+  /* Máscara 417x515 r16; imagen 772x515 desplazada −234px */
+  .gallery__main {
+    width: 417px;
+    height: 515px;
+  }
+
+  .gallery__main img {
+    left: -234px;
+    width: 772px;
+    height: 515px;
+  }
+
+  /* 2x2 fotos de 370x245 r16: x 522 / 916 */
+  .gallery__photos {
+    grid-template-columns: repeat(2, 370px);
+    grid-auto-rows: 245px;
+    column-gap: 24px;
+    row-gap: 26px;
+  }
+
+  .gallery__photos img {
+    width: 370px;
+    height: 245px;
+  }
 }

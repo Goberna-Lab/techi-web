@@ -31,7 +31,7 @@
   font-size: 40px;
   font-weight: 800;
   line-height: 48px;
-  letter-spacing: -1px;
+  letter-spacing: -1.2px;
   text-transform: uppercase;
   white-space: nowrap;
 }
@@ -79,4 +79,61 @@
   font-size: 76px;
   line-height: 51.76px;
   color: #292b41;
+}
+
+/* Laptop 1366 (XD 1366x620: y 2482 → 2832) */
+@media (width: 1366px) {
+  .vision {
+    width: 1366px;
+    height: 350px;
+  }
+
+  /* El semicírculo mide igual que en 1920 */
+  .vision__arc {
+    top: 42.45px;
+  }
+
+  /* Columna de texto de x 294 a x 757 */
+  .vision__content {
+    width: 463px;
+    margin-left: 294px;
+    padding-top: 87.6px;
+  }
+
+  /* Poppins ExtraBold 24 a 30 de interlínea, tracking −30 */
+  .vision__title {
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: -0.72px;
+  }
+
+  .vision__text {
+    margin-top: 16.13px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  /* Logo PRIN 126x126 en (757, 2594) + texto en x 900 (la marca del 1920 al 72.4%) */
+  .vision__brand {
+    margin-top: 112px;
+  }
+
+  .vision__brand img {
+    width: 126px;
+    height: 126px;
+  }
+
+  .vision__brand-name {
+    margin: 3.83px 0 0 17px;
+  }
+
+  .vision__brand-top {
+    font-size: 50px;
+    line-height: 59.4px;
+  }
+
+  .vision__brand-bottom {
+    font-size: 54px;
+    line-height: 37.5px;
+  }
 }

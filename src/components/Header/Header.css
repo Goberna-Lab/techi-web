@@ -63,3 +63,72 @@
   text-decoration: none;
   color: #ffffff;
 }
+
+/* Laptop 1366 (XD 1366x620: header y 0 → 80) */
+@media (width: 1366px) {
+  .header {
+    width: 1366px;
+    height: 80px;
+  }
+
+  /* Logo: círculo de 59 en (80, 10), imagen 249x66 en (−3, −3); TECHI 25 (baseline 36) y MAESTRE 27 (baseline 59) en x 146 */
+  .header__brand {
+    width: 502px;
+    margin: 10px 0 0 80px;
+  }
+
+  .header__brand .brand__mark {
+    width: 59px;
+    height: 59px;
+  }
+
+  .header__brand .brand__mark img {
+    top: -3px;
+    left: -3px;
+    width: 249px;
+    height: 66px;
+  }
+
+  .header__brand .brand__name {
+    margin: 2.5px 0 0 7px;
+  }
+
+  .header__brand .brand__name-top {
+    font-size: 25px;
+    line-height: 29.35px;
+  }
+
+  .header__brand .brand__name-bottom {
+    font-size: 27px;
+    line-height: 15.24px;
+  }
+
+  /* Navegación en x 582 (Poppins Medium 14, baseline 45) → el botón empieza en x 1110 */
+  .header__nav {
+    width: 528px;
+    margin-top: 24.1px;
+  }
+
+  /* INICIO x 582 · CONOCE A TECHI 657 · PROPUESTAS 807 · GALERÍA 926 · BLOG 1014 */
+  .header__nav ul {
+    gap: 30px;
+  }
+
+  .header__nav li:nth-child(3) {
+    margin-left: -2px;
+  }
+
+  .header__nav li:nth-child(5) {
+    margin-left: -1px;
+  }
+
+  .header__nav a {
+    font-size: 14px;
+  }
+
+  /* Botón 176x48 en (1110, 16); el texto va con baseline 47 */
+  .header__cta {
+    margin-top: 16px;
+    padding-top: 4px;
+  }
+}

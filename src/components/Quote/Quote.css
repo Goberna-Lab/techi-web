@@ -87,7 +87,7 @@
   line-height: 42px;
   letter-spacing: 1.8px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.702);
+  color: #ffffff;
 }
 
 .quote__author::before {
@@ -96,4 +96,66 @@
   width: 50px;
   height: 1px;
   background: #e10803;
+}
+
+/* Laptop 1366 (XD 1366x620: y 1948 → 2482) */
+@media (width: 1366px) {
+  .quote {
+    width: 1366px;
+    height: 534px;
+  }
+
+  /* Imagen 1366x769 en y 1872 (76px por encima de la sección) */
+  .quote__bg {
+    top: -76px;
+    width: 1366px;
+    height: 769px;
+  }
+
+  /* Degradado 919.9x533.6, opacidad 78% (en proporción a la del 1920) */
+  .quote__overlay {
+    width: 919.9px;
+    height: 534px;
+    opacity: 0.6883;
+    background: linear-gradient(
+      90deg,
+      rgba(8, 14, 36, 1) 1.88%,
+      rgba(8, 14, 36, 0.949) 50.75%,
+      rgba(8, 14, 36, 0) 71.82%
+    );
+  }
+
+  .quote__content {
+    padding: 128.8px 0 0 142px;
+  }
+
+  .quote__line--md {
+    font-size: 32px;
+  }
+
+  .quote__line--xl {
+    margin-top: -4.4px;
+    font-size: 56px;
+  }
+
+  .quote__line--last {
+    margin-top: -1.6px;
+  }
+
+  .quote__text {
+    margin-top: -1.1px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  /* Línea roja 35.6x1 en x 142.6 + texto en x 186 */
+  .quote__author {
+    gap: 7.8px;
+    margin-top: 9px;
+    padding-left: 0.6px;
+  }
+
+  .quote__author::before {
+    width: 35.6px;
+  }
 }

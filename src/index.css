@@ -41,13 +41,23 @@ img {
   display: block;
 }
 
-/* Laptop 1366px: el diseño de 1920 se escala en proporción (1366 / 1920) para mantener el XD. */
+/* Saltos de línea por diseño: los textos van cortados como en cada XD.
+   .br-wide solo corta en 1920 y .br-laptop solo en 1366 */
+.br-laptop {
+  display: none;
+}
+
+/* Laptop 1366px: tiene su propio XD (1366x620). Cada componente trae sus medidas en su CSS */
 @media (width: 1366px) {
-  :root {
-    --page-zoom: 0.711458;
+  html {
+    scroll-padding-top: 80px;
   }
 
-  #root {
-    zoom: var(--page-zoom);
+  .br-wide {
+    display: none;
+  }
+
+  .br-laptop {
+    display: inline;
   }
 }

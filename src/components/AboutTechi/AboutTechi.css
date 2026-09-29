@@ -194,3 +194,126 @@
   margin-top: 4.08px;
   background: #707070;
 }
+
+/* Laptop 1366 (XD 1366x620: y 620 → 1294.2) */
+@media (width: 1366px) {
+  /* Sin recorte: en XD el rótulo "profesional" baja 6px más allá del alto de la sección (la foto ya se recorta en su máscara) */
+  .about {
+    width: 1366px;
+    height: 674.2px;
+    overflow: visible;
+  }
+
+  /* Máscara 685.8x674.2 en (0, 0); imagen 1017x831.8 en (-314.6, -128.1) */
+  .about__media {
+    width: 685.8px;
+    height: 674.2px;
+  }
+
+  .about__media img {
+    top: -128.1px;
+    left: -314.6px;
+    width: 1017px;
+    height: 831.8px;
+  }
+
+  .about__content {
+    padding: 72px 0 0 745.1px;
+  }
+
+  /* Línea roja 33.7x2 en x 702.5 */
+  .about__eyebrow::before {
+    top: 17.8px;
+    left: -42.6px;
+    width: 33.7px;
+  }
+
+  /* Poppins ExtraBold 43 (baseline 798.3) y 69 (baseline 863.2) */
+  .about__title {
+    margin-top: 23.25px;
+  }
+
+  .about__title-name {
+    font-size: 43px;
+  }
+
+  .about__title-accent {
+    font-size: 69px;
+    line-height: 59.6px;
+  }
+
+  /* Nunito 16 a 28 de interlínea, marco de 541 */
+  .about__text {
+    margin-top: 21.98px;
+    font-size: 16px;
+  }
+
+  /* Botón 253.7x53.9 en y 1116.1 */
+  .about__btn {
+    gap: 14.5px;
+    width: 253.7px;
+    height: 53.9px;
+    margin-top: 29.27px;
+    padding-left: 72.5px;
+    font-size: 12px;
+  }
+
+  .about__btn img {
+    width: 16.18px;
+    height: 13.62px;
+  }
+
+  /* Fila de datos: línea divisoria en (910.7, 1214.9), 72.9 de alto; círculos de 50.8 en y 1224.7 */
+  .about__stats {
+    margin-top: 44.9px;
+  }
+
+  .about__stat--years {
+    width: 165.6px;
+  }
+
+  .about__stat--experience {
+    margin-left: 49.7px;
+  }
+
+  .about__stat-badge {
+    width: 50.8px;
+    height: 50.8px;
+    margin-top: 9.8px;
+  }
+
+  .about__stat--years .about__stat-body {
+    margin-left: 13.7px;
+  }
+
+  .about__stat--experience .about__stat-body {
+    margin-left: 10.5px;
+  }
+
+  /* Poppins Bold 39, baseline 1244.7 */
+  .about__stat-number {
+    margin-top: -3.35px;
+    font-size: 39px;
+    line-height: 39px;
+  }
+
+  .about__stat-plus {
+    margin-left: 7.9px;
+    font-size: 39px;
+  }
+
+  .about__stat-label--sm {
+    margin-top: 8.66px;
+    font-size: 10px;
+    line-height: 11px;
+  }
+
+  .about__stat-label--md {
+    margin: 9.53px 0 0 2.8px;
+  }
+
+  .about__stats-divider {
+    height: 72.9px;
+    margin-top: 0;
+  }
+}

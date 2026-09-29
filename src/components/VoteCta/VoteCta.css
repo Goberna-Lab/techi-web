@@ -72,3 +72,59 @@
   top: 7.75px;
   left: 7.75px;
 }
+
+/* Laptop 1366 (XD 1366x620: sección de 350 de alto) */
+@media (width: 1366px) {
+  .vote {
+    width: 1366px;
+    height: 350px;
+  }
+
+  /* Columna de texto de x 294 a x 807 */
+  .vote__content {
+    width: 513px;
+    margin-left: 294px;
+    padding-top: 120px;
+  }
+
+  .vote__title {
+    font-size: 40px;
+    line-height: 36px;
+  }
+
+  .vote__subtitle {
+    margin-top: 10.85px;
+    font-size: 29px;
+    line-height: 36px;
+  }
+
+  .vote__ballot {
+    margin-top: 67.15px;
+  }
+
+  .vote__ballot-label {
+    font-size: 21px;
+    line-height: 25px;
+  }
+
+  /* Recuadro 180x180 en (807, 4872); logo 140x139 a 20px; aspa de 164 */
+  .vote__ballot-box {
+    width: 180px;
+    height: 180px;
+    margin-top: 13.85px;
+  }
+
+  .vote__ballot-logo {
+    top: 18px;
+    left: 18px;
+    width: 140px;
+    height: 139px;
+  }
+
+  .vote__ballot-x {
+    top: 5.06px;
+    left: 5.06px;
+    width: 165.9px;
+    height: 165.9px;
+  }
+}

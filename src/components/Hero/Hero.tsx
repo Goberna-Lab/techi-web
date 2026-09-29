@@ -28,13 +28,13 @@ function Hero() {
 
         <p className="hero__text">
           <strong>
-            Seguridad implacable, salud 24 horas y orden en
+            Seguridad implacable, salud 24 horas y orden en nuestras
             <br />
-            nuestras calles
+            calles
           </strong>
-          . Conoce el plan de Techi Maestre para
+          . Conoce el plan de Techi Maestre para recuperar la
           <br />
-          recuperar la tranquilidad de nuestras familias.
+          tranquilidad de nuestras familias.
         </p>
 
         <div className="hero__actions">

@@ -16,9 +16,13 @@ function Vision() {
           oportunidades para todos
         </h2>
         <p className="vision__text">
-          Conoce nuestras principales propuestas para construir un distrito
-          <br />
-          moderno, humano y preparado para los desafíos del futuro.
+          Conoce nuestras principales propuestas para construir{' '}
+          <br className="br-laptop" />
+          un distrito{' '}
+          <br className="br-wide" />
+          moderno, humano y preparado para los{' '}
+          <br className="br-laptop" />
+          desafíos del futuro.
         </p>
       </div>
 

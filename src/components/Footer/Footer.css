@@ -204,3 +204,61 @@
   display: block;
   flex: none;
 }
+
+/* Laptop 1366 (XD 1366x620: barra roja 10 + fondo de 600) */
+@media (width: 1366px) {
+  .footer {
+    width: 1366px;
+    height: 610px;
+  }
+
+  /* Arco (trazo 140) de 661x330.5 apoyado abajo en x 297 */
+  .footer__arc {
+    top: 269.5px;
+    left: 297px;
+    width: 661px;
+    height: 330.5px;
+  }
+
+  /* Foto 538x538 en (365, 5188) */
+  .footer__photo {
+    top: 62px;
+    left: 365px;
+    width: 538px;
+    height: 538px;
+  }
+
+  /* El logo y las redes miden igual que en 1920: logo en (78, 5264); la tarjeta empieza en x 845 */
+  .footer__info {
+    width: 767px;
+    margin-left: 78px;
+    padding-top: 138px;
+  }
+
+  .footer__socials {
+    margin-top: 50px;
+  }
+
+  /* Tarjeta 441x459 en (845, 5197): el formulario del 1920 al 85.8% (514 → 441).
+     Las letras no escalan igual en XD: rótulos 8, campos 9 y botón 8 (se dividen por el zoom) */
+  .footer__form {
+    zoom: 0.857977;
+    margin-top: 82.75px;
+  }
+
+  .footer__field label {
+    font-size: 9.3243px;
+    letter-spacing: 0.7459px;
+  }
+
+  .footer__field input,
+  .footer__field select,
+  .footer__field textarea {
+    font-size: 10.4898px;
+    letter-spacing: 0.8392px;
+  }
+
+  .footer__submit {
+    font-size: 9.3243px;
+  }
+}

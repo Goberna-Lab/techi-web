@@ -15,11 +15,14 @@ function Quote() {
         </p>
 
         <p className="quote__text">
-          vengo como madre y vecina a
-          <br />
-          trabajar sin descanso para devolverle
-          <br />
-          la paz y el orgullo a Surquillo.
+          vengo como madre y vecina a{' '}
+          <br className="br-wide" />
+          trabajar sin{' '}
+          <br className="br-laptop" />
+          descanso para devolverle{' '}
+          <br className="br-wide" />
+          la paz y el orgullo{' '}
+          <br className="br-laptop" />a Surquillo.
         </p>
 
         <footer className="quote__author">Techi Maestre</footer>
