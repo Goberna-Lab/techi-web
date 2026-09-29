@@ -147,10 +147,10 @@
   color: var(--hero-dark);
 }
 
-/* Laptop 1366 (XD 1366x620: hero y 80 → 620, alto 540). Alto = ventana − header (máx. 704, el alto del fondo) */
+/* Laptop 1366 (XD 1366x620: hero y 80 → 620, alto 540) */
 @media (width: 1366px) {
   .hero {
-    --hero-h: clamp(540px, calc(100vh - 80px), 704px);
+    --hero-h: 540px;
 
     width: 1366px;
   }

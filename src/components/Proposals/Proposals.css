@@ -59,7 +59,7 @@
   display: block;
 }
 
-/* 1366: la tira de tarjetas se recorta al ancho visible del XD y se desliza al cambiar */
+/* 1366: la tira de tarjetas se recorta al ancho visible del XD */
 .proposals__strip {
   position: absolute;
   height: 128px;
@@ -77,11 +77,6 @@
   font: inherit;
   text-align: left;
   cursor: pointer;
-}
-
-.proposals__strip .proposal-card,
-.proposals__strip .proposal-card__outline {
-  transition: left 0.35s ease;
 }
 
 .proposal-card--bg {
