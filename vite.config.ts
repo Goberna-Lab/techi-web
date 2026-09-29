@@ -3,11 +3,10 @@ import babel from '@rolldown/plugin-babel'
 import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
-export default defineConfig(({ command, isPreview }) => ({
-  // GitHub Pages sirve el sitio en /techi-web/; en local se mantiene la raíz
-  base: command === 'build' || isPreview ? '/techi-web/' : '/',
+// base '/' por default: el sitio se sirve en la raíz del dominio desde vps2.
+export default defineConfig({
   plugins: [
     react(),
     babel({ presets: [reactCompilerPreset()] })
   ],
-}))
+})
