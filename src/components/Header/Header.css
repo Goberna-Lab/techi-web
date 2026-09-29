@@ -138,8 +138,8 @@
   display: none;
 }
 
-/* Mobile (hasta 767px): logo, botón Súmate y menú desplegable */
-@media (max-width: 767px) {
+/* Mobile y tablet (hasta 1023px): logo, botón Súmate y menú desplegable */
+@media (max-width: 1023px) {
   .header {
     align-items: center;
     width: 100%;
@@ -252,5 +252,22 @@
 
   .header__menu {
     margin-left: 4px;
+  }
+}
+
+/* Tablet (768–1023px): más aire a los lados y logo un poco más grande */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .header {
+    height: 72px;
+    padding: 0 32px;
+  }
+
+  .header__brand .brand {
+    zoom: 0.8;
+  }
+
+  .header__nav {
+    top: 72px;
+    padding: 8px 32px 16px;
   }
 }

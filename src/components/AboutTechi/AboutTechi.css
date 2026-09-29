@@ -318,8 +318,8 @@
   }
 }
 
-/* Mobile (hasta 767px): la foto con el arco arriba y el texto debajo */
-@media (max-width: 767px) {
+/* Mobile y tablet (hasta 1023px): la foto con el arco arriba y el texto debajo */
+@media (max-width: 1023px) {
   .about {
     display: flex;
     flex-direction: column;
@@ -441,5 +441,28 @@
     align-self: stretch;
     height: auto;
     margin-top: 0;
+  }
+}
+
+/* Tablet (768–1023px): foto con el arco a la izquierda y el texto a la derecha */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .about {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  /* Mismo encuadre de la foto que en escritorio (máscara 933x800), a la izquierda */
+  .about__media {
+    flex: none;
+    width: 46%;
+  }
+
+  .about__content {
+    flex: 1 1 auto;
+    padding: 56px 40px 56px 32px;
+  }
+
+  .about__btn {
+    align-self: flex-start;
   }
 }

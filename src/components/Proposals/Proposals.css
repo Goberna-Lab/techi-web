@@ -417,3 +417,57 @@
   text-align: center;
   color: #13141d;
 }
+
+/* Tablet (768–1023px): texto y medidas a la izquierda, la foto a la derecha */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .proposals-m {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 32px;
+    padding: 64px 0;
+  }
+
+  .proposals-m__eyebrow,
+  .proposals-m__intro {
+    grid-column: 1 / -1;
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+
+  .proposals-m__title {
+    font-size: 32px;
+    line-height: 36px;
+  }
+
+  .proposals-m__media {
+    grid-column: 2;
+    grid-row: 3;
+    align-self: start;
+    margin: 24px 40px 0 0;
+  }
+
+  .proposals-m__body {
+    grid-column: 1;
+    grid-row: 3;
+    margin: 24px 0 0 40px;
+  }
+
+  .proposals-m__cards,
+  .proposals-m__nav {
+    grid-column: 1 / -1;
+  }
+
+  .proposals-m__cards {
+    padding: 4px 40px 8px;
+    scroll-padding: 0 40px;
+  }
+
+  .proposals-m__card {
+    width: 300px;
+    height: 120px;
+  }
+
+  .proposals-m__card-body {
+    width: 150px;
+  }
+}

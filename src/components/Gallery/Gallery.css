@@ -155,8 +155,8 @@
   }
 }
 
-/* Mobile (hasta 767px): la foto grande arriba y las cuatro en 2x2 */
-@media (max-width: 767px) {
+/* Mobile y tablet (hasta 1023px): la foto grande arriba y las cuatro en 2x2 */
+@media (max-width: 1023px) {
   .gallery {
     width: 100%;
     height: auto;
@@ -216,5 +216,29 @@
     height: auto;
     aspect-ratio: 461 / 305;
     border-radius: 12px;
+  }
+}
+
+/* Tablet (768–1023px): la foto grande a la izquierda y las cuatro en 2x2 a la derecha */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .gallery {
+    padding: 64px 40px;
+  }
+
+  .gallery__grid {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .gallery__main {
+    flex: none;
+    width: 40%;
+    aspect-ratio: auto;
+  }
+
+  .gallery__photos {
+    flex: 1 1 auto;
+    gap: 16px;
   }
 }

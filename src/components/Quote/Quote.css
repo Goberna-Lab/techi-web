@@ -160,8 +160,8 @@
   }
 }
 
-/* Mobile (hasta 767px): la foto cubre la sección y el velo oscuro va parejo para que se lea el texto */
-@media (max-width: 767px) {
+/* Mobile y tablet (hasta 1023px): la foto cubre la sección y el velo oscuro va parejo para que se lea el texto */
+@media (max-width: 1023px) {
   .quote {
     width: 100%;
     height: auto;
@@ -215,5 +215,35 @@
   .quote__author {
     margin-top: 20px;
     font-size: 15px;
+  }
+}
+
+/* Tablet (768–1023px): el velo oscuro de izquierda a derecha, como en escritorio */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .quote {
+    min-height: 560px;
+  }
+
+  .quote__overlay {
+    background: linear-gradient(90deg, rgba(8, 14, 36, 0.88) 0%, rgba(8, 14, 36, 0.7) 45%, rgba(8, 14, 36, 0.15) 85%);
+  }
+
+  .quote__content {
+    max-width: 560px;
+    padding: 110px 40px 96px;
+  }
+
+  .quote__line--md {
+    font-size: 34px;
+    line-height: 42px;
+  }
+
+  .quote__line--xl {
+    font-size: 64px;
+  }
+
+  .quote__text {
+    font-size: 20px;
+    line-height: 28px;
   }
 }

@@ -62,8 +62,8 @@ img {
   }
 }
 
-/* Mobile (hasta 767px): una columna a todo el ancho. Los textos cortan solos (sin los saltos de cada XD) */
-@media (max-width: 767px) {
+/* Mobile y tablet (hasta 1023px): una columna a todo el ancho. Los textos cortan solos (sin los saltos de cada XD) */
+@media (max-width: 1023px) {
   html {
     scroll-padding-top: 64px;
   }

@@ -240,8 +240,8 @@
   }
 }
 
-/* Mobile (hasta 767px): texto arriba y la foto de Techi abajo, sobre el mismo fondo */
-@media (max-width: 767px) {
+/* Mobile y tablet (hasta 1023px): texto arriba y la foto de Techi abajo, sobre el mismo fondo */
+@media (max-width: 1023px) {
   .hero {
     display: flex;
     flex-direction: column;
@@ -328,5 +328,54 @@
     height: auto;
     aspect-ratio: 655 / 843;
     margin-top: 28px;
+  }
+}
+
+/* Tablet (768–1023px): texto a la izquierda y la foto de Techi a la derecha, apoyada abajo */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero {
+    flex-direction: row;
+    align-items: flex-end;
+    min-height: 560px;
+  }
+
+  .hero__bg::after {
+    inset: 0 40% 0 0;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.92) 60%, rgba(255, 255, 255, 0));
+  }
+
+  /* El texto ocupa la mitad izquierda para no pisar la foto */
+  .hero__content {
+    flex: 0 1 54%;
+    align-self: center;
+    min-width: 0;
+    padding: 56px 0 56px 40px;
+  }
+
+  .hero__title-top {
+    font-size: clamp(42px, 5.6vw, 54px);
+  }
+
+  .hero__title-accent {
+    font-size: clamp(50px, 6.7vw, 64px);
+  }
+
+  .hero__text {
+    max-width: min(400px, 48vw);
+    font-size: 17px;
+    line-height: 26px;
+  }
+
+  .hero__actions {
+    align-self: flex-start;
+    width: 300px;
+  }
+
+  .hero__portrait {
+    flex: none;
+    align-self: flex-end;
+    width: 40%;
+    max-width: 380px;
+    margin: 0 24px 0 auto;
   }
 }

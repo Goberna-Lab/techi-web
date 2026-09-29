@@ -138,8 +138,8 @@
   }
 }
 
-/* Mobile (hasta 767px): texto arriba y la marca debajo; el semicírculo pasa al borde derecho */
-@media (max-width: 767px) {
+/* Mobile y tablet (hasta 1023px): texto arriba y la marca debajo; el semicírculo pasa al borde derecho */
+@media (max-width: 1023px) {
   .vision {
     flex-direction: column;
     width: 100%;
@@ -203,5 +203,53 @@
   .vision__brand-bottom {
     font-size: 34px;
     line-height: 26px;
+  }
+}
+
+/* Tablet (768–1023px): texto a la izquierda y la marca a la derecha; el semicírculo en el borde izquierdo */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .vision {
+    flex-direction: row;
+    align-items: center;
+    padding: 64px 40px 64px 96px;
+  }
+
+  .vision__arc {
+    top: 50%;
+    right: auto;
+    bottom: auto;
+    left: 0;
+    width: 60px;
+    height: 120px;
+    transform: translateY(-50%);
+  }
+
+  .vision__content {
+    flex: 1 1 auto;
+  }
+
+  .vision__title {
+    font-size: 26px;
+    line-height: 32px;
+  }
+
+  .vision__brand {
+    flex: none;
+    margin: 0 0 0 32px;
+  }
+
+  .vision__brand img {
+    width: 96px;
+    height: 96px;
+  }
+
+  .vision__brand-top {
+    font-size: 40px;
+    line-height: 42px;
+  }
+
+  .vision__brand-bottom {
+    font-size: 44px;
+    line-height: 34px;
   }
 }

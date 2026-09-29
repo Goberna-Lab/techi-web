@@ -20,8 +20,8 @@
   }
 }
 
-/* Mobile (hasta 767px): esquina inferior derecha */
-@media (max-width: 767px) {
+/* Mobile y tablet (hasta 1023px): esquina inferior derecha */
+@media (max-width: 1023px) {
   .whatsapp-button {
     right: 16px;
     bottom: 16px;

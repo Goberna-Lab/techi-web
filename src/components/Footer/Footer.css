@@ -263,8 +263,8 @@
   }
 }
 
-/* Mobile (hasta 767px): marca y redes, el formulario a todo el ancho y la foto de Techi al final */
-@media (max-width: 767px) {
+/* Mobile y tablet (hasta 1023px): marca y redes, el formulario a todo el ancho y la foto de Techi al final */
+@media (max-width: 1023px) {
   .footer {
     flex-direction: column;
     width: 100%;
@@ -375,5 +375,45 @@
     width: min(110vw, 560px);
     height: auto;
     transform: translateX(-50%);
+  }
+}
+
+/* Tablet (768–1023px): marca y redes a la izquierda, formulario a la derecha con dos campos por fila */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .footer {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 56px 40px 0;
+  }
+
+  .footer__info {
+    width: 36%;
+  }
+
+  .footer__form {
+    width: 60%;
+    margin-top: 0;
+  }
+
+  .footer__row,
+  .footer__row--first {
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .footer__field {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .footer__photo {
+    width: 380px;
+    margin: 40px auto 0;
+  }
+
+  .footer__arc {
+    width: 600px;
   }
 }

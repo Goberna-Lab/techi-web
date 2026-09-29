@@ -71,7 +71,7 @@ const DESCENT: Record<string, number> = {
 
 /* Laptop 1366: su propio XD (1366x620). Mobile (hasta 767): versión en flujo, sin XD */
 const LAPTOP_QUERY = '(width: 1366px)'
-const MOBILE_QUERY = '(max-width: 767px)'
+const MOBILE_QUERY = '(max-width: 1023px)'
 
 function useMediaQuery(media: string) {
   return useSyncExternalStore(
@@ -231,7 +231,8 @@ function ProposalsMobile() {
     const row = cardsRef.current
     const card = row?.children[active] as HTMLElement | undefined
     if (row && card) {
-      row.scrollTo({ left: card.offsetLeft - row.offsetLeft - 20, behavior: 'smooth' })
+      const padding = parseFloat(getComputedStyle(row).paddingLeft)
+      row.scrollTo({ left: card.offsetLeft - row.offsetLeft - padding, behavior: 'smooth' })
     }
   }, [active])
 

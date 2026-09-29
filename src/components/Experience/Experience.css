@@ -194,8 +194,8 @@
   }
 }
 
-/* Mobile (hasta 767px): la tarjeta a todo el ancho y los tres ítems uno debajo del otro */
-@media (max-width: 767px) {
+/* Mobile y tablet (hasta 1023px): la tarjeta a todo el ancho y los tres ítems uno debajo del otro */
+@media (max-width: 1023px) {
   .experience {
     width: 100%;
     height: auto;
@@ -250,5 +250,51 @@
     font-size: 17px;
     line-height: 26px;
     white-space: normal;
+  }
+}
+
+/* Tablet (768–1023px): los tres ítems en una fila */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .experience {
+    padding: 8px 32px 64px;
+  }
+
+  .experience__card {
+    padding: 48px 24px 52px;
+  }
+
+  .experience__title {
+    font-size: 32px;
+    line-height: 36px;
+  }
+
+  .experience__items {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .experience__item,
+  .experience__item--surquillo,
+  .experience__item--trayectoria,
+  .experience__item--servicio {
+    flex: 1 1 0;
+    max-width: none;
+  }
+
+  .experience__item .experience__icon {
+    width: 96px;
+    height: 96px;
+  }
+
+  .experience__item-title {
+    font-size: 20px;
+  }
+
+  .experience__item-text,
+  .experience__item-text--tall {
+    font-size: 15px;
+    line-height: 23px;
   }
 }
