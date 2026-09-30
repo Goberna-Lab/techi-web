@@ -10,7 +10,11 @@ const PHOTOS = [gallery1, gallery2, gallery3, gallery4]
 function Gallery() {
   return (
     <section className="gallery" id="galeria">
-      <p className="gallery__eyebrow">Galería</p>
+      <p className="gallery__eyebrow">
+        <span className="xd-wide">Galería</span>
+        {/* El XD mobile (430) lleva este rótulo */}
+        <span className="xd-phone">Nuestras propuestas</span>
+      </p>
       <h2 className="gallery__title">Surquillo, de cerca</h2>
       <p className="gallery__text">
         Recorridos, encuentros momentos compartidos con los vecinos en distintos espacios del distrito.

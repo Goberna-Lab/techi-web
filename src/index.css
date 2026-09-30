@@ -56,6 +56,11 @@ img {
   display: none;
 }
 
+/* Textos que cambian según el XD: .xd-phone solo en mobile (XD 430), .xd-wide en el resto */
+.xd-phone {
+  display: none;
+}
+
 /* Laptop 1366px: tiene su propio XD (1366x620), que cubre de 1024 a 1366 (escalado). Cada componente trae sus medidas en su CSS */
 @media (min-width: 1024px) and (max-width: 1366px) {
   html {
@@ -95,5 +100,15 @@ img {
 @media (max-width: 767px) {
   html {
     scroll-padding-top: calc(70px * var(--page-zoom));
+  }
+}
+
+@media (max-width: 767px) {
+  .xd-wide {
+    display: none;
+  }
+
+  .xd-phone {
+    display: inline;
   }
 }

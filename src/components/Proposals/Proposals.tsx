@@ -353,6 +353,11 @@ const ACCORDION_CROPS: Record<string, [number, number, number, number]> = {
   '08': [-16, -10, 426, 240],
 }
 
+/* Títulos que el XD mobile escribe distinto (la 01 va como "Surquillo, de cerca") */
+const ACCORDION_TITLES: Record<string, string[]> = {
+  '01': ['Surquillo, de cerca'],
+}
+
 /* Mobile (hasta 767): acordeón del XD 430. Arranca con la 01 abierta; tocar una la abre y tocar la abierta la cierra */
 function ProposalsAccordion() {
   const [open, setOpen] = useState<number | null>(0)
@@ -378,7 +383,7 @@ function ProposalsAccordion() {
               >
                 <span className="proposals-a__number">{proposal.number}</span>
                 <span className="proposals-a__title">
-                  {proposal.title.map((line, lineIndex) => (
+                  {(ACCORDION_TITLES[proposal.number] ?? proposal.title).map((line, lineIndex) => (
                     <span key={line}>
                       {lineIndex > 0 && <br />}
                       {line}

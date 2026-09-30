@@ -1,3 +1,4 @@
+import { useSyncExternalStore } from 'react'
 import type { CSSProperties, FormEvent } from 'react'
 import Brand from '../Brand/Brand'
 import techiFooter from '../../assets/footer/techi-footer.webp'
@@ -25,6 +26,8 @@ const SOCIALS = [
     icon: socialTt,
     label: 'TikTok',
     handle: '@teresamaestresurquillo',
+    /* El XD mobile (430) muestra este usuario */
+    phoneHandle: '@TechiMaestreOficial',
     href: 'https://www.tiktok.com/@teresamaestresurquillo',
   },
 ]
@@ -38,7 +41,23 @@ function fieldStyle(x: number, dx: number, gap: number, dy = 0): FieldStyle {
   return { '--x': `${x}px`, '--dx': `${dx}px`, '--gap': `${gap}px`, '--dy': `${dy}px` }
 }
 
+/* Mobile del XD 430 (hasta 767px): el teléfono de ejemplo va sin el +51, como en ese XD */
+const PHONE_QUERY = '(max-width: 767px)'
+
+function useIsPhone() {
+  return useSyncExternalStore(
+    (onChange) => {
+      const query = window.matchMedia(PHONE_QUERY)
+      query.addEventListener('change', onChange)
+      return () => query.removeEventListener('change', onChange)
+    },
+    () => window.matchMedia(PHONE_QUERY).matches,
+    () => false,
+  )
+}
+
 function Footer() {
+  const isPhone = useIsPhone()
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
   }
@@ -55,7 +74,7 @@ function Footer() {
             <li key={social.handle}>
               <a href={social.href} target="_blank" rel="noopener noreferrer">
                 <img src={social.icon} width="36" height="36" alt={social.label} />
-                <span>{social.handle}</span>
+                <span>{isPhone && social.phoneHandle ? social.phoneHandle : social.handle}</span>
               </a>
             </li>
           ))}
@@ -88,7 +107,7 @@ function Footer() {
         <div className="footer__row">
           <div className="footer__field" style={fieldStyle(31, 0.38, 15.65)}>
             <label htmlFor="f-telefono">Teléfono</label>
-            <input id="f-telefono" name="telefono" type="tel" placeholder="+51 000 000 000" />
+            <input id="f-telefono" name="telefono" type="tel" placeholder={isPhone ? '000 000 000' : '+51 000 000 000'} />
           </div>
           <div className="footer__field" style={fieldStyle(25.19, 0.38, 15.65)}>
             <label htmlFor="f-correo">Correo</label>
