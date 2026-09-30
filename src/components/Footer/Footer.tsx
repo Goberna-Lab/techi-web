@@ -21,7 +21,12 @@ const SOCIALS = [
     handle: '@TechiMaestreSurquillo',
     href: 'https://www.instagram.com/techimaestresurquillo',
   },
-  { icon: socialTt, label: 'TikTok', handle: '@TechiMaestreOficial', href: undefined },
+  {
+    icon: socialTt,
+    label: 'TikTok',
+    handle: '@TechiMaestreOficial',
+    href: 'https://www.tiktok.com/@teresamaestresurquillo',
+  },
 ]
 
 /* Posiciones XD relativas a la tarjeta del formulario:
@@ -48,17 +53,10 @@ function Footer() {
         <ul className="footer__socials">
           {SOCIALS.map((social) => (
             <li key={social.handle}>
-              {social.href ? (
-                <a href={social.href} target="_blank" rel="noopener noreferrer">
-                  <img src={social.icon} width="36" height="36" alt={social.label} />
-                  <span>{social.handle}</span>
-                </a>
-              ) : (
-                <>
-                  <img src={social.icon} width="36" height="36" alt={social.label} />
-                  <span>{social.handle}</span>
-                </>
-              )}
+              <a href={social.href} target="_blank" rel="noopener noreferrer">
+                <img src={social.icon} width="36" height="36" alt={social.label} />
+                <span>{social.handle}</span>
+              </a>
             </li>
           ))}
         </ul>
