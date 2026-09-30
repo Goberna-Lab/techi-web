@@ -433,3 +433,146 @@
     width: 600px;
   }
 }
+
+/* Mobile (hasta 767px): XD 430 → footer 430x1568 (y 6755 → 8323; franja roja de 10 arriba). Orden del XD:
+   logo en (65, 75), formulario 398x868 en (15, 193), redes en y 1117 y la foto 358x272 apoyada abajo sobre el arco.
+   Las posiciones absolutas cuentan desde debajo de la franja (y − 10) */
+@media (max-width: 767px) {
+  .footer {
+    display: block;
+    width: 430px;
+    height: 1568px;
+    padding: 0;
+  }
+
+  .footer__info {
+    position: static;
+  }
+
+  .footer__info .brand {
+    position: absolute;
+    top: 65px;
+    left: 65px;
+  }
+
+  /* Open Sans 18; círculos de 36 en x 16, uno cada 45 */
+  .footer__socials {
+    position: absolute;
+    top: 1107px;
+    left: 16px;
+    margin: 0;
+  }
+
+  .footer__socials span {
+    font-size: 18px;
+  }
+
+  /* Arco rojo (trazo 90) de 420.2x210.1 en x 6.1, apoyado abajo */
+  .footer__arc {
+    display: none;
+  }
+
+  .footer::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 6.1px;
+    box-sizing: border-box;
+    width: 420.2px;
+    height: 210.1px;
+    border: 90px solid #e10803;
+    border-bottom: 0;
+    border-radius: 210.1px 210.1px 0 0;
+  }
+
+  .footer__photo {
+    position: absolute;
+    top: 1285.9px;
+    left: 36px;
+    z-index: 1;
+    width: 358.19px;
+    height: 272.06px;
+    margin: 0;
+  }
+
+  /* Tarjeta r16 con sombra 0 3 3 negro 16%; campos de 366 en x 16, uno cada 82.75 */
+  .footer__form {
+    width: 398px;
+    height: 868px;
+    margin: 183px 0 0 15px;
+    padding: 40.34px 0 0 16px;
+    border-radius: 16px;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16);
+  }
+
+  .footer__row,
+  .footer__row--first {
+    gap: 24.09px;
+  }
+
+  .footer__row + .footer__row,
+  .footer__row:nth-child(5) {
+    margin-top: 24.09px;
+  }
+
+  .footer__field,
+  .footer__field--select,
+  .footer__field--message {
+    width: 366px;
+  }
+
+  /* Montserrat Medium 13 a 16 (espaciado 1.04) */
+  .footer__field label {
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 1.04px;
+  }
+
+  /* Montserrat 14 a 18 (espaciado 1.12), la línea 33 más abajo de la del rótulo */
+  .footer__field input,
+  .footer__field select,
+  .footer__field textarea,
+  .footer__row--first input {
+    height: 27.02px;
+    margin-top: 15.64px;
+    padding: 0 0 8.02px;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 1.12px;
+  }
+
+  /* Flecha 17.5x9.6 en x 349 del campo; "Seleccione" con el mismo gris de los demás textos de ejemplo */
+  .footer__field select {
+    background-position: 349px 1.3px;
+    color: rgba(27, 31, 40, 0.6);
+  }
+
+  .footer__field textarea {
+    height: 77px;
+  }
+
+  /* Botón 367x48 r6; QUIERO SUMARME Montserrat 14 en x 102.5 y la flecha 14.9x12.6 en x 248.5 */
+  .footer__submit {
+    position: relative;
+    justify-content: flex-start;
+    width: 367px;
+    height: 48px;
+    margin: 43.5px 0 0;
+    padding: 0 0 0 102.5px;
+    border-radius: 6px;
+    font-family: 'Montserrat', sans-serif;
+    font-variation-settings: normal;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+  }
+
+  .footer__submit img {
+    position: absolute;
+    top: 17.9px;
+    left: 248.5px;
+    width: 14.9px;
+    height: 12.6px;
+  }
+}

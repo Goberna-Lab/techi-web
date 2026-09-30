@@ -69,9 +69,11 @@ const DESCENT: Record<string, number> = {
   'Open Sans': 0.293,
 }
 
-/* Laptop 1366: su propio XD (1366x620). Mobile (hasta 767): versión en flujo, sin XD */
+/* Laptop 1366: su propio XD (1366x620). Tablet (768–1023): versión en flujo, sin XD.
+   Mobile (hasta 767): acordeón del XD 430 */
 const LAPTOP_QUERY = '(min-width: 1024px) and (max-width: 1366px)'
 const MOBILE_QUERY = '(max-width: 1023px)'
+const PHONE_QUERY = '(max-width: 767px)'
 
 function useMediaQuery(media: string) {
   return useSyncExternalStore(
@@ -327,8 +329,116 @@ function ProposalsMobile() {
   )
 }
 
+/* Flecha del acordeón (XD mobile: 17.5x10.2, hacia abajo; gira cuando la propuesta está abierta) */
+function Chevron() {
+  return (
+    <svg className="proposals-a__chevron" viewBox="20.85 985.22 17.48 10.22" aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M 29.608 995.439 C 29.993 995.436 30.362 995.283 30.636 995.013 L 37.748 987.901 C 38.329 987.323 38.331 986.384 37.753 985.804 C 37.175 985.223 36.236 985.221 35.655 985.799 L 29.59 991.865 L 23.524 985.799 C 22.944 985.221 22.005 985.223 21.427 985.804 C 20.849 986.384 20.851 987.323 21.432 987.901 L 28.544 995.013 C 28.827 995.292 29.211 995.446 29.608 995.439 Z"
+      />
+    </svg>
+  )
+}
+
+/* Encuadre de cada foto dentro de su máscara 398x230 (XD mobile): x, y, ancho y alto de la imagen */
+const ACCORDION_CROPS: Record<string, [number, number, number, number]> = {
+  '01': [0, -17.9, 398, 265.3],
+  '02': [-16, -11.9, 430, 278.5],
+  '03': [-32, 0, 446, 297],
+  '04': [-16, -26, 455, 256],
+  '05': [-16, -18, 414, 276],
+  '06': [-16, -18, 430, 287],
+  '07': [-16, -18, 430, 287],
+  '08': [-16, -10, 426, 240],
+}
+
+/* Mobile (hasta 767): acordeón del XD 430. Arranca con la 01 abierta; tocar una la abre y tocar la abierta la cierra */
+function ProposalsAccordion() {
+  const [open, setOpen] = useState<number | null>(0)
+
+  return (
+    <section className="proposals-a" id="propuestas">
+      <p className="proposals-a__eyebrow">Nuestras propuestas</p>
+
+      <ul className="proposals-a__list">
+        {PROPOSALS.map((proposal, index) => {
+          const isOpen = index === open
+          return (
+            <li
+              key={proposal.number}
+              className={`proposals-a__item${isOpen ? ' proposals-a__item--open' : ''}`}
+              data-number={proposal.number}
+            >
+              <button
+                type="button"
+                className="proposals-a__header"
+                aria-expanded={isOpen}
+                onClick={() => setOpen(isOpen ? null : index)}
+              >
+                <span className="proposals-a__number">{proposal.number}</span>
+                <span className="proposals-a__title">
+                  {proposal.title.map((line, lineIndex) => (
+                    <span key={line}>
+                      {lineIndex > 0 && <br />}
+                      {line}
+                    </span>
+                  ))}
+                </span>
+                <Chevron />
+              </button>
+
+              {isOpen && (
+                <div className="proposals-a__panel">
+                  <p className="proposals-a__subtitle">{proposal.subtitle}</p>
+
+                  <div className={`proposals-a__text${proposal.measures.length ? '' : ' proposals-a__text--list'}`}>
+                    {proposal.text.map((line) => (
+                      <p key={line}>{line}</p>
+                    ))}
+                  </div>
+
+                  {proposal.measures.length > 0 && (
+                    <ul className="proposals-a__measures">
+                      {proposal.measures.map((measure) => (
+                        <li key={measure.title} className="proposals-a__measure">
+                          <img src={checkIcon} width="19.4" height="19.4" alt="" />
+                          <p>
+                            <strong>{measure.title}</strong>
+                            <br />
+                            {measure.text}
+                          </p>
+                          {measure.bullets?.map((bullet) => (
+                            <p key={bullet} className="proposals-a__bullet">
+                              {bullet}
+                            </p>
+                          ))}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  <div className="proposals-a__media">
+                    <img
+                      src={IMAGES[proposal.image]}
+                      alt={proposal.alt}
+                      style={(([left, top, width, height]) => ({ left, top, width, height }))(ACCORDION_CROPS[proposal.number])}
+                    />
+                  </div>
+                </div>
+              )}
+            </li>
+          )
+        })}
+      </ul>
+    </section>
+  )
+}
+
 function Proposals() {
   const isMobile = useMediaQuery(MOBILE_QUERY)
+  const isPhone = useMediaQuery(PHONE_QUERY)
+  if (isPhone) return <ProposalsAccordion />
   return isMobile ? <ProposalsMobile /> : <ProposalsDesktop />
 }
 

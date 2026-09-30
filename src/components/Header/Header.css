@@ -273,3 +273,38 @@
     padding: 8px 32px 16px;
   }
 }
+
+/* Mobile (hasta 767px): XD 430 → header 430x70 solo con el logo (sin "Súmate" ni menú).
+   Logo: círculo de 48 en (16, 11); TECHI 20 (línea base 32) y MAESTRE 21 (línea base 51) en x 70 */
+@media (max-width: 767px) {
+  .header {
+    width: 430px;
+    height: 70px;
+    padding: 0 0 0 17px;
+    box-shadow: none;
+  }
+
+  .header__brand .brand {
+    --brand-scale: 0.685714;
+  }
+
+  .header__brand .brand__name {
+    margin: 2.5px 0 0 5px;
+  }
+
+  .header__brand .brand__name-top {
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .header__brand .brand__name-bottom {
+    font-size: 21px;
+    line-height: 12px;
+  }
+
+  .header__nav,
+  .header__cta,
+  .header__menu {
+    display: none;
+  }
+}

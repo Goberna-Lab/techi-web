@@ -115,6 +115,11 @@
   line-height: 32px;
 }
 
+/* Flechas del carrusel: solo existen en mobile */
+.experience__arrow {
+  display: none;
+}
+
 /* Laptop 1366 (XD 1366x620: y 1294.2 → 1948) */
 @media (min-width: 1024px) and (max-width: 1366px) {
   .experience {
@@ -296,5 +301,123 @@
   .experience__item-text--tall {
     font-size: 15px;
     line-height: 23px;
+  }
+}
+
+/* Mobile (hasta 767px): XD 430 → sección 430x520 (y 2100 → 2620). Tarjeta 398x441 en (16, 40) con un ítem
+   a la vista y flechas de 40 a los lados (carrusel). Medidas relativas a la tarjeta */
+@media (max-width: 767px) {
+  .experience {
+    width: 430px;
+    height: 520px;
+    padding: 40px 0 0 16px;
+  }
+
+  .experience__card {
+    position: relative;
+    width: 398px;
+    height: 441px;
+    padding: 42.9px 0 0;
+    border-radius: 16px;
+  }
+
+  /* Poppins ExtraBold 26 a 30, centrado en x 215 (línea base 107) */
+  .experience__title {
+    font-size: 26px;
+    line-height: 30px;
+  }
+
+  .experience__items {
+    display: block;
+    margin-top: 52.1px;
+  }
+
+  .experience__item,
+  .experience__item--surquillo,
+  .experience__item--trayectoria,
+  .experience__item--servicio {
+    display: none;
+    align-items: flex-start;
+    width: 321px;
+    max-width: none;
+    margin: 0 0 0 34px;
+  }
+
+  .experience__item--active {
+    display: flex;
+  }
+
+  /* Círculos de 113 en x 146 / 140 / 154 de la página */
+  .experience__item .experience__icon {
+    width: 113px;
+    height: 113px;
+  }
+
+  .experience__item--surquillo .experience__icon {
+    margin-left: 96px;
+  }
+
+  .experience__item--trayectoria .experience__icon {
+    margin-left: 90px;
+  }
+
+  .experience__item--servicio .experience__icon {
+    margin-left: 104px;
+  }
+
+  /* Poppins SemiBold 22 a 33 (línea base 347) */
+  .experience__item-title {
+    margin-top: 15.8px;
+    font-size: 22px;
+    line-height: 33px;
+    letter-spacing: -0.4px;
+  }
+
+  /* Nunito 18 a 24, marco de 321 en y 366 */
+  .experience__item-text,
+  .experience__item-text--tall {
+    margin-top: 10.2px;
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .experience__arrow {
+    position: absolute;
+    top: 201px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  /* Anterior: blanco con sombra y flecha #454a50 de 13x10.8 hacia la izquierda */
+  .experience__arrow--prev {
+    left: 12px;
+    background: #ffffff;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16);
+    color: #454a50;
+  }
+
+  .experience__arrow--prev .experience__arrow-glyph {
+    width: 13px;
+    height: 10.8px;
+    transform: scaleX(-1);
+  }
+
+  /* Siguiente: rojo con flecha blanca de 19.4x16.2 */
+  .experience__arrow--next {
+    left: 356px;
+    background: var(--experience-red);
+    color: #ffffff;
+  }
+
+  .experience__arrow--next .experience__arrow-glyph {
+    width: 19.4px;
+    height: 16.2px;
   }
 }

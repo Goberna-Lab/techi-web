@@ -215,3 +215,36 @@
     margin-top: 0;
   }
 }
+
+/* Mobile (hasta 767px): XD 430 → sección 430x425 (y 6330 → 6755) sobre el fondo #f4f8fc de la galería.
+   Todo centrado en x 215; recuadro 180x180 en y 180 (mismas medidas que en laptop) */
+@media (max-width: 767px) {
+  .vote {
+    width: 430px;
+    height: 425px;
+    padding: 25.2px 0 0;
+    background: #f4f8fc;
+  }
+
+  /* Poppins ExtraBold 28 a 36 (línea base 53) */
+  .vote__title {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  /* Poppins ExtraBold 20 a 26 (línea base 82) */
+  .vote__subtitle {
+    margin-top: 0.8px;
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  /* Poppins ExtraBold 21 a 25 (línea base 161) */
+  .vote__ballot {
+    margin-top: 27.15px;
+  }
+
+  .vote__ballot-box {
+    margin-top: 13.85px;
+  }
+}

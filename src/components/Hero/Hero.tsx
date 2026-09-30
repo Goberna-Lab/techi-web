@@ -19,8 +19,8 @@ function Hero() {
       <div className="hero__content">
         <h1 className="hero__title">
           <span className="hero__title-top">
-            SE VIENE LO
-            <br />
+            SE VIENE LO{' '}
+            <br className="hero__title-br" />
             MEJOR PARA
           </span>
           <span className="hero__title-accent">SURQUILLO.</span>

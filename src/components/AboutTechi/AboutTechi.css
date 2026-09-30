@@ -466,3 +466,169 @@
     align-self: flex-start;
   }
 }
+
+/* Mobile (hasta 767px): XD 430 → sección 430x1171 (y 929 → 2100). Foto + arco en una máscara 441x433.6
+   en (0, 0); imagen 654x535 en (-202.3, -82.4). Todo el texto va en x 16 */
+@media (max-width: 767px) {
+  .about {
+    display: block;
+    width: 430px;
+    height: 1171px;
+  }
+
+  .about__media {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 441.04px;
+    height: 433.61px;
+    margin: 0;
+  }
+
+  .about__media img {
+    position: absolute;
+    top: -82.4px;
+    left: -202.3px;
+    width: 654.05px;
+    height: 534.97px;
+    max-width: none;
+  }
+
+  .about__content {
+    position: relative;
+    align-items: flex-start;
+    padding: 461px 0 0 16px;
+  }
+
+  /* Poppins Medium 12, espaciado 1.2; línea roja 33.7x2 en x 0 (y 481.5) */
+  .about__eyebrow {
+    margin: 0 0 0 26.6px;
+    padding-left: 0;
+    font-size: 12px;
+    line-height: 42px;
+    letter-spacing: 1.2px;
+  }
+
+  .about__eyebrow::before {
+    top: 19.5px;
+    left: -42.6px;
+    width: 33.7px;
+  }
+
+  /* MARÍA TERESA 37 (línea base 565.3) y MAESTRE 59 (línea base 621.3) */
+  .about__title {
+    margin: 26.85px 0 0;
+    text-align: left;
+  }
+
+  .about__title-name {
+    font-size: 37px;
+    line-height: 45px;
+  }
+
+  .about__title-accent {
+    font-size: 59px;
+    line-height: 51.6px;
+  }
+
+  /* Nunito 17 a 25 de interlínea, marco de 398 que empieza en y 667.1 */
+  .about__text {
+    width: 398px;
+    margin: 40.65px 0 0;
+    font-size: 17px;
+    line-height: 25px;
+    white-space: normal;
+  }
+
+  /* Botón 253.7x53.9 en y 980.5; SABER MÁS en x 72.4 y la flecha 16.2x13.6 en x 165 */
+  .about__btn {
+    position: relative;
+    align-self: flex-start;
+    justify-content: flex-start;
+    width: 253.68px;
+    max-width: none;
+    height: 53.94px;
+    margin-top: 64.4px;
+    padding: 0 0 0 72.4px;
+    font-size: 12px;
+  }
+
+  .about__btn img {
+    position: absolute;
+    top: 17.3px;
+    left: 165px;
+    width: 16.2px;
+    height: 13.6px;
+  }
+
+  /* Números Poppins Bold 39 (línea base 1109.1): la fila empieza en y 1065.95 (arriba del renglón del número) */
+  .about__stats {
+    display: flex;
+    align-items: flex-start;
+    align-self: flex-start;
+    margin-top: 30.55px;
+    column-gap: 0;
+  }
+
+  .about__stat {
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .about__stat--years {
+    width: 138px;
+  }
+
+  .about__stat--experience {
+    margin-left: 12.3px;
+  }
+
+  /* Círculo de 50.84 en y 1089.1 */
+  .about__stat-badge {
+    width: 50.84px;
+    height: 50.84px;
+    margin-top: 23.15px;
+  }
+
+  .about__stat--years .about__stat-body {
+    margin: 0 0 0 13.66px;
+  }
+
+  .about__stat--experience .about__stat-body {
+    margin: 0 0 0 10.46px;
+  }
+
+  .about__stat-number {
+    font-size: 39px;
+    line-height: 59px;
+  }
+
+  .about__stat-plus {
+    top: 0;
+    margin-left: 7.45px;
+    font-size: 39px;
+  }
+
+  /* Nunito Light 10 a 11 (línea base 1132.4) */
+  .about__stat-label--sm {
+    margin: -1.34px 0 0;
+    font-size: 10px;
+    line-height: 11px;
+  }
+
+  /* Nunito Light 18 a 20, marco de 170 en (231.4, 1122.4) */
+  .about__stat-label--md {
+    margin: -2.55px 0 0 2.8px;
+    font-size: 18px;
+    line-height: 20px;
+    white-space: nowrap;
+  }
+
+  /* Línea 1x72.95 en (154, 1079.3) */
+  .about__stats-divider {
+    align-self: flex-start;
+    height: 72.95px;
+    margin-top: 13.35px;
+  }
+}

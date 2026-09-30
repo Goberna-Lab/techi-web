@@ -379,3 +379,122 @@
     margin: 0 24px 0 auto;
   }
 }
+
+/* Mobile (hasta 767px): XD 430 → hero 430x859 (y 70 → 929). Arriba una franja #f1f1f2 de 117 y el fondo
+   1461x823 en (-372, 113); la foto va en una máscara 400x477 en (15, 382), apoyada abajo */
+@media (max-width: 767px) {
+  .hero {
+    display: block;
+    width: 430px;
+    height: 859px;
+  }
+
+  .hero__bg {
+    background: #f1f1f2;
+  }
+
+  .hero__bg::after,
+  .hero__bg-img--left {
+    display: none;
+  }
+
+  .hero__bg-img--main {
+    top: 113px;
+    left: -372px;
+    width: 1461.3px;
+    height: 823px;
+    object-fit: fill;
+  }
+
+  /* Imagen 416x555 en (-16, 0) dentro de la máscara */
+  .hero__portrait {
+    position: absolute;
+    top: 382px;
+    left: 15px;
+    width: 400px;
+    height: 477px;
+    margin: 0;
+    aspect-ratio: auto;
+  }
+
+  .hero__portrait img {
+    top: 0;
+    left: -16px;
+    width: 416px;
+    height: 555px;
+  }
+
+  /* Poppins ExtraBold: 28 (línea base 73) y SURQUILLO. 44 (línea base 114) en x 16 */
+  .hero__content {
+    position: absolute;
+    top: 0;
+    left: 16px;
+    padding: 49.7px 0 0;
+  }
+
+  .hero__title-br {
+    display: none;
+  }
+
+  .hero__title-top {
+    font-size: 28px;
+    line-height: 27px;
+    letter-spacing: -0.18px;
+    white-space: nowrap;
+  }
+
+  .hero__title-accent {
+    font-size: 44px;
+    line-height: 43.8px;
+    letter-spacing: 0.4px;
+  }
+
+  /* Nunito 17 a 25 de interlínea en un marco de 357 que empieza en y 129 */
+  .hero__text {
+    width: 357px;
+    margin-top: 8.5px;
+    font-size: 17px;
+    line-height: 25px;
+  }
+
+  /* Botones 236x48 en y 259 y 316 (el de borde, 1px más a la derecha): mismas medidas que en laptop */
+  .hero__actions {
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: auto;
+    gap: 9px;
+    margin-top: 30px;
+  }
+
+  .hero__btn,
+  .hero__btn--primary,
+  .hero__btn--outline {
+    justify-content: flex-start;
+    width: 236px;
+    height: 48px;
+    border-radius: 24px;
+    font-size: 12px;
+  }
+
+  .hero__btn--primary {
+    gap: 8.3px;
+    padding: 0 0 0 21.9px;
+  }
+
+  .hero__btn--primary img {
+    width: 18.79px;
+    height: 18.79px;
+  }
+
+  .hero__btn--outline {
+    gap: 7.2px;
+    margin-left: 1px;
+    padding: 0 0 0 14.2px;
+    background: transparent;
+  }
+
+  .hero__btn--outline img {
+    width: 24.58px;
+    height: 18.8px;
+  }
+}

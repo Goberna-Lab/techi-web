@@ -24,10 +24,10 @@ html {
   }
 }
 
-/* Escritorio con otro ancho que el de los XD (1280, 1440, 1536 por el escalado de Windows, 2K, 4K...):
+/* Mobile (hasta 767) y escritorio con otro ancho que el de los XD (1280, 1440, 1536 por el escalado de Windows, 2K, 4K...):
    la página entera escala para ocupar justo el ancho visible, sin cortes ni huecos. De 1024 a 1366 se
    escala el XD laptop y desde 1367 el de 1920. --page-zoom lo calcula main.tsx (1 en 1366 y 1920 exactos) */
-@media (min-width: 1024px) {
+@media (min-width: 1024px), (max-width: 767px) {
   #root {
     zoom: var(--page-zoom);
   }
@@ -87,5 +87,13 @@ img {
   .br-wide,
   .br-laptop {
     display: none;
+  }
+}
+
+/* Mobile (hasta 767px): XD TECHI 430x932. La página mide 430 fijo y escala al ancho del teléfono (--page-zoom),
+   igual que el escritorio. Cada componente trae sus medidas del XD en su CSS */
+@media (max-width: 767px) {
+  html {
+    scroll-padding-top: calc(70px * var(--page-zoom));
   }
 }

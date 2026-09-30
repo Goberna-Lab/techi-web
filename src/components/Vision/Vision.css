@@ -253,3 +253,83 @@
     line-height: 34px;
   }
 }
+
+/* Mobile (hasta 767px): XD 430 → sección 430x527 (y 2993 → 3520). Arriba cuelga un semicírculo rojo (trazo 40)
+   de 173.9x87 en x 128.5; título, texto y el logo PRIN 101x101 en (49, 370) */
+@media (max-width: 767px) {
+  .vision {
+    display: block;
+    width: 430px;
+    height: 527px;
+    padding: 0;
+  }
+
+  .vision::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 128.5px;
+    box-sizing: border-box;
+    width: 173.9px;
+    height: 87px;
+    border: 40px solid #e10803;
+    border-top: 0;
+    border-radius: 0 0 87px 87px;
+  }
+
+  .vision__arc {
+    display: none;
+  }
+
+  /* Poppins ExtraBold 24 a 30, espaciado -0.72, marco de 391 en (16, 150) */
+  .vision__content {
+    padding: 152px 0 0 16px;
+  }
+
+  .vision__title {
+    width: 391px;
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: -0.72px;
+  }
+
+  .vision__title br {
+    display: inline;
+  }
+
+  /* Nunito 17 a 25, marco de 398 en y 259 */
+  .vision__text {
+    width: 398px;
+    margin-top: 16px;
+    font-size: 17px;
+    line-height: 25px;
+  }
+
+  /* TECHI Raleway Black 39 (línea base 410) y MAESTRE 43 (línea base 450) en x 163 */
+  .vision__brand {
+    position: absolute;
+    top: 370px;
+    left: 49px;
+    align-items: flex-start;
+    margin: 0;
+  }
+
+  .vision__brand img {
+    width: 101px;
+    height: 101px;
+  }
+
+  .vision__brand-name {
+    margin: 3.7px 0 0 13px;
+  }
+
+  .vision__brand-top {
+    font-size: 39px;
+    line-height: 46px;
+  }
+
+  .vision__brand-bottom {
+    font-size: 43px;
+    line-height: 31.4px;
+  }
+}

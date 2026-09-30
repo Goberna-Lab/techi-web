@@ -471,3 +471,215 @@
     width: 150px;
   }
 }
+
+/* Mobile (hasta 767px): XD 430 → acordeón (y 3520). Rótulo con su línea en y 72.5; filas de 64.5 (63.5 + línea
+   #d0d0d0) desde y 129; la abierta muestra subtítulo, texto, medidas y la foto 398x230 */
+.proposals-a {
+  width: 430px;
+  padding: 51.8px 0 62.52px;
+  background: #ffffff;
+  color: #13141d;
+}
+
+.proposals-a__eyebrow {
+  position: relative;
+  margin: 0 0 0 42.6px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 42px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #e10803;
+}
+
+.proposals-a__eyebrow::before {
+  content: '';
+  position: absolute;
+  top: 19.7px;
+  left: -42.6px;
+  width: 33.7px;
+  height: 2px;
+  background: #e10803;
+}
+
+.proposals-a__list {
+  width: 398px;
+  margin: 35.2px 0 0 16px;
+  padding: 0;
+  list-style: none;
+}
+
+.proposals-a__item {
+  border-bottom: 1px solid #d0d0d0;
+}
+
+.proposals-a__header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 63.5px;
+  padding: 0 0 0 42px;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+/* Poppins ExtraBold 20 centrado en x 17, con la línea roja 33x2 debajo */
+.proposals-a__number {
+  position: absolute;
+  top: 18px;
+  left: 0;
+  width: 34px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 25px;
+  text-align: center;
+  color: #e10803;
+}
+
+.proposals-a__number::after {
+  content: '';
+  position: absolute;
+  top: 28.5px;
+  left: 0.5px;
+  width: 33px;
+  height: 2px;
+  background: #e10803;
+}
+
+.proposals-a__title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 22px;
+  letter-spacing: -0.2px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.proposals-a__chevron {
+  position: absolute;
+  top: 26.4px;
+  right: 0;
+  width: 17.48px;
+  height: 10.22px;
+  color: #e10803;
+}
+
+.proposals-a__item--open .proposals-a__chevron {
+  top: 24.5px;
+  transform: rotate(180deg);
+}
+
+.proposals-a__panel {
+  padding: 9px 0 44px;
+}
+
+/* Nunito Bold 17 a 24 */
+.proposals-a__subtitle {
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+/* Nunito 17 a 24 en un marco de 403 */
+.proposals-a__text {
+  width: 403px;
+  margin-top: 19px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 17px;
+  line-height: 24px;
+}
+
+.proposals-a__text p {
+  margin: 0;
+}
+
+/* Sin medidas (08): la lista va en Nunito 16 a 32, marco de 365 */
+.proposals-a__text--list {
+  width: 365px;
+  font-size: 16px;
+  line-height: 32px;
+}
+
+/* Medidas: Nunito 16 a 24 en x 49 (marco de 365), check de 19.4 en x 16; una línea en blanco entre medidas */
+.proposals-a__measures {
+  margin: 31px 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.proposals-a__measure {
+  position: relative;
+  width: 398px;
+  padding-left: 33px;
+}
+
+.proposals-a__measure + .proposals-a__measure {
+  margin-top: 24px;
+}
+
+.proposals-a__measure img {
+  position: absolute;
+  top: 1.4px;
+  left: 0;
+  width: 19.4px;
+  height: 19.4px;
+}
+
+.proposals-a__measure p {
+  width: 365px;
+  margin: 0;
+}
+
+.proposals-a__measure strong {
+  font-weight: 700;
+}
+
+/* La 01 abierta (artboard 1 del XD): medidas a 22 de interlineado y sin línea bajo la foto; la fila 02 empieza 23.5 más abajo */
+.proposals-a__item--open[data-number='01'] {
+  border-bottom: 0;
+}
+
+.proposals-a__item--open[data-number='01'] .proposals-a__panel {
+  padding-bottom: 23.5px;
+}
+
+.proposals-a__item[data-number='01'] .proposals-a__measures {
+  line-height: 22px;
+}
+
+.proposals-a__item[data-number='01'] .proposals-a__measure + .proposals-a__measure {
+  margin-top: 22px;
+}
+
+.proposals-a__bullet {
+  margin-top: 24px !important;
+}
+
+/* Foto en una máscara 398x230 con esquinas de 16 */
+.proposals-a__media {
+  position: relative;
+  width: 398px;
+  height: 230px;
+  margin-top: 38px;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.proposals-a__media img {
+  position: absolute;
+  display: block;
+  max-width: none;
+}

@@ -242,3 +242,80 @@
     gap: 16px;
   }
 }
+
+/* Mobile (hasta 767px): XD 430 → sección 430x1081 (y 5249 → 6330), mismo fondo que "Surquillo Valiente".
+   Rótulo con su línea en y 72.5; foto 398x491 r16 en (16, 268) y 2x2 de 193x128 r16 en y 771 / 912 */
+@media (max-width: 767px) {
+  .gallery {
+    width: 430px;
+    height: 1081px;
+    padding: 51.8px 0 0 16px;
+  }
+
+  /* Poppins Medium 12 (espaciado 1.2) en x 42.6; línea 33.7x2 en x 0 */
+  .gallery__eyebrow {
+    margin-left: 26.6px;
+    padding-left: 0;
+    font-size: 12px;
+    letter-spacing: 1.2px;
+  }
+
+  .gallery__eyebrow::before {
+    top: 19.7px;
+    left: -42.6px;
+    width: 33.7px;
+  }
+
+  /* Poppins ExtraBold 24 a 30 (espaciado -0.72), marco de 391 en y 145 */
+  .gallery__title {
+    width: 391px;
+    margin-top: 53.2px;
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: -0.72px;
+  }
+
+  /* Nunito 17 a 25, marco de 398 en y 194 */
+  .gallery__text {
+    width: 398px;
+    margin-top: 16px;
+    font-size: 17px;
+    line-height: 25px;
+  }
+
+  .gallery__grid {
+    gap: 12px;
+    width: 398px;
+    margin-top: 25px;
+  }
+
+  /* Imagen 736.4x490.9 desplazada -223 dentro de la máscara */
+  .gallery__main {
+    width: 398px;
+    height: 491px;
+    aspect-ratio: auto;
+    border-radius: 16px;
+  }
+
+  .gallery__main img {
+    position: absolute;
+    top: 0;
+    left: -223px;
+    width: 736.4px;
+    height: 490.9px;
+  }
+
+  .gallery__photos {
+    grid-template-columns: repeat(2, 193px);
+    column-gap: 12px;
+    row-gap: 13px;
+    width: 398px;
+  }
+
+  .gallery__photos img {
+    width: 193px;
+    height: 128px;
+    aspect-ratio: auto;
+    border-radius: 16px;
+  }
+}

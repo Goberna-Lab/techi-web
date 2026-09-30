@@ -247,3 +247,82 @@
     line-height: 28px;
   }
 }
+
+/* Mobile (hasta 767px): XD 430 → sección 430x373 (y 2620 → 2993). Imagen 690x388 en (-190, -15); degradado
+   #080E24 de abajo hacia arriba (430x371.8, opacidad 78%, multiplicar). Texto en x 16 */
+@media (max-width: 767px) {
+  .quote {
+    width: 430px;
+    height: 373px;
+    min-height: 0;
+  }
+
+  .quote__bg {
+    top: -15px;
+    left: -190px;
+    width: 690px;
+    height: 388px;
+    object-fit: fill;
+  }
+
+  .quote__overlay {
+    top: 1px;
+    width: 430px;
+    height: 371.8px;
+    opacity: 0.7785;
+    mix-blend-mode: multiply;
+    background: linear-gradient(
+      0deg,
+      rgba(8, 14, 36, 0.978) 0,
+      rgba(8, 14, 36, 0.949) 152.9px,
+      rgba(8, 14, 36, 0) 267px
+    );
+  }
+
+  .quote__content {
+    padding: 194px 0 0 16px;
+  }
+
+  /* Poppins Bold: 22 a 29 (marco en y 194), 32 (línea base 248) y 22 */
+  .quote__line {
+    white-space: nowrap;
+  }
+
+  .quote__line--md {
+    font-size: 22px;
+    line-height: 29px;
+  }
+
+  .quote__line--xl {
+    margin-top: 0;
+    font-size: 32px;
+    line-height: 27.6px;
+  }
+
+  .quote__line--last {
+    margin-top: -1px;
+  }
+
+  /* Poppins 12 a 15, marco de 249 en y 277 */
+  .quote__text {
+    width: 249px;
+    margin-top: 0;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: -0.2px;
+  }
+
+  /* Línea roja 23.2x1 en x 16.4 y texto Poppins Medium 12 (espaciado 1.2) en x 45 */
+  .quote__author {
+    gap: 5.4px;
+    margin-top: 3px;
+    padding-left: 0.4px;
+    font-size: 12px;
+    line-height: 42px;
+    letter-spacing: 1.2px;
+  }
+
+  .quote__author::before {
+    width: 23.2px;
+  }
+}
