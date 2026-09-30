@@ -24,7 +24,7 @@ const SOCIALS = [
   {
     icon: socialTt,
     label: 'TikTok',
-    handle: '@TechiMaestreOficial',
+    handle: '@teresamaestresurquillo',
     href: 'https://www.tiktok.com/@teresamaestresurquillo',
   },
 ]
