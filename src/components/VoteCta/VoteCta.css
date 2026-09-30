@@ -146,10 +146,10 @@
     padding: 0;
   }
 
+  /* En una sola línea: la letra se ajusta al ancho disponible (el texto mide ~10.9 veces su tamaño) */
   .vote__title {
-    font-size: clamp(30px, 9vw, 38px);
+    font-size: min(38px, calc((100vw - 40px) / 11.2));
     line-height: 1.1;
-    white-space: normal;
   }
 
   .vote__subtitle {

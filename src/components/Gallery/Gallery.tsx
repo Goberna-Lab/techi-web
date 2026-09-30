@@ -10,7 +10,7 @@ const PHOTOS = [gallery1, gallery2, gallery3, gallery4]
 function Gallery() {
   return (
     <section className="gallery" id="galeria">
-      <p className="gallery__eyebrow">Nuestras propuestas</p>
+      <p className="gallery__eyebrow">Galería</p>
       <h2 className="gallery__title">Surquillo, de cerca</h2>
       <p className="gallery__text">
         Recorridos, encuentros momentos compartidos con los vecinos en distintos espacios del distrito.
