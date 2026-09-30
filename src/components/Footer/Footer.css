@@ -47,6 +47,16 @@
   height: 36px;
 }
 
+/* El enlace ocupa la fila entera (ícono + usuario) y se ve igual que la fila sin enlace */
+.footer__socials a {
+  display: flex;
+  align-items: center;
+  gap: inherit;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
 .footer__socials li + li {
   margin-top: 9px;
 }

@@ -9,9 +9,19 @@ import btnArrow from '../../assets/footer/btn-arrow.svg'
 import './Footer.css'
 
 const SOCIALS = [
-  { icon: socialFb, label: 'Facebook', handle: '@TechiMaestreSURQUILLO' },
-  { icon: socialIg, label: 'Instagram', handle: '@TechiMaestreSurquillo' },
-  { icon: socialTt, label: 'TikTok', handle: '@TechiMaestreOficial' },
+  {
+    icon: socialFb,
+    label: 'Facebook',
+    handle: '@TechiMaestreSURQUILLO',
+    href: 'https://www.facebook.com/TechiMaestreSURQUILLO',
+  },
+  {
+    icon: socialIg,
+    label: 'Instagram',
+    handle: '@TechiMaestreSurquillo',
+    href: 'https://www.instagram.com/techimaestresurquillo',
+  },
+  { icon: socialTt, label: 'TikTok', handle: '@TechiMaestreOficial', href: undefined },
 ]
 
 /* Posiciones XD relativas a la tarjeta del formulario:
@@ -38,8 +48,17 @@ function Footer() {
         <ul className="footer__socials">
           {SOCIALS.map((social) => (
             <li key={social.handle}>
-              <img src={social.icon} width="36" height="36" alt={social.label} />
-              <span>{social.handle}</span>
+              {social.href ? (
+                <a href={social.href} target="_blank" rel="noopener noreferrer">
+                  <img src={social.icon} width="36" height="36" alt={social.label} />
+                  <span>{social.handle}</span>
+                </a>
+              ) : (
+                <>
+                  <img src={social.icon} width="36" height="36" alt={social.label} />
+                  <span>{social.handle}</span>
+                </>
+              )}
             </li>
           ))}
         </ul>
