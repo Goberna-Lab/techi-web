@@ -332,6 +332,22 @@ function Proposals() {
   return isMobile ? <ProposalsMobile /> : <ProposalsDesktop />
 }
 
+/* Miniatura de cada tarjeta: la del artboard donde esa tarjeta está activa. En varios artboards del XD
+   quedaron miniaturas copiadas de otra propuesta (p. ej. 02 y 03 con la foto de 01 cuando la activa es 04) */
+const THUMBS = {
+  wide: thumbsByCard(LAYOUT.wide),
+  laptop: thumbsByCard(LAYOUT.laptop),
+}
+
+function thumbsByCard(boards: Board[]) {
+  const thumbs: Record<string, Card['thumb']> = {}
+  for (const board of boards) {
+    const card = board.cards.find((item) => item.number === board.active)
+    if (card?.thumb) thumbs[card.number] = card.thumb
+  }
+  return thumbs
+}
+
 function ProposalsDesktop() {
   const isLaptop = useMediaQuery(LAPTOP_QUERY)
   const [active, setActive] = useState(0)
@@ -357,7 +373,7 @@ function ProposalsDesktop() {
       {board.cards.map((card) => (
         <ProposalCard
           key={card.number}
-          card={card}
+          card={{ ...card, thumb: THUMBS[variant][card.number] ?? card.thumb }}
           offsetX={offsetX}
           offsetY={offsetY}
           isActive={card.number === board.active}
