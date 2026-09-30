@@ -8,7 +8,6 @@ import Proposals from './components/Proposals/Proposals'
 import Gallery from './components/Gallery/Gallery'
 import VoteCta from './components/VoteCta/VoteCta'
 import Footer from './components/Footer/Footer'
-import WhatsAppButton from './components/WhatsAppButton/WhatsAppButton'
 
 function App() {
   return (
@@ -25,7 +24,6 @@ function App() {
         <VoteCta />
       </main>
       <Footer />
-      <WhatsAppButton />
     </>
   )
 }
