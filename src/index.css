@@ -64,8 +64,11 @@ img {
 
 /* Mobile y tablet (hasta 1023px): una columna a todo el ancho. Los textos cortan solos (sin los saltos de cada XD) */
 @media (max-width: 1023px) {
+  /* overflow-x en html es el respaldo para navegadores sin clip (Safari < 16, WebViews viejos):
+     así la página nunca se desliza de lado. Va en html y no en #root para no romper el header sticky */
   html {
     scroll-padding-top: 64px;
+    overflow-x: hidden;
   }
 
   #root {

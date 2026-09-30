@@ -323,19 +323,21 @@
 
   .footer__field label {
     margin: 0;
-    font-size: 11px;
-    line-height: 14px;
+    font-size: 12px;
+    line-height: 16px;
   }
 
+  /* 16px como mínimo: con menos, Safari de iPhone hace zoom al tocar el campo y la página queda corrida */
   .footer__field input,
   .footer__field select,
   .footer__field textarea,
   .footer__row--first input {
     height: auto;
-    margin-top: 8px;
-    padding: 6px 0 10px;
-    font-size: 14px;
-    line-height: 20px;
+    margin-top: 6px;
+    padding: 8px 0 14px;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.4px;
     text-indent: 0;
   }
 
@@ -344,7 +346,7 @@
   }
 
   .footer__field textarea {
-    height: 64px;
+    height: 68px;
   }
 
   .footer__submit {

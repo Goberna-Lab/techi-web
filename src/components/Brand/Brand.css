@@ -1,5 +1,8 @@
-/* Medidas XD: círculo 70x70; imagen 296x79 en (-4, -4) dentro del círculo; texto en x +78 */
+/* Medidas XD: círculo 70x70; imagen 296x79 en (-4, -4) dentro del círculo; texto en x +78.
+   --brand-scale achica el logo entero (en vez de zoom, que algunos navegadores móviles ignoran) */
 .brand {
+  --brand-scale: 1;
+
   display: flex;
   align-items: flex-start;
   text-decoration: none;
@@ -8,37 +11,38 @@
 .brand__mark {
   position: relative;
   flex: none;
-  width: 70px;
-  height: 70px;
+  width: calc(70px * var(--brand-scale));
+  height: calc(70px * var(--brand-scale));
   overflow: hidden;
   border-radius: 50%;
 }
 
 .brand__mark img {
   position: absolute;
-  top: -4px;
-  left: -4px;
-  width: 296px;
-  height: 79px;
+  top: calc(-4px * var(--brand-scale));
+  left: calc(-4px * var(--brand-scale));
+  width: calc(296px * var(--brand-scale));
+  height: calc(79px * var(--brand-scale));
 }
 
 .brand__name {
   display: flex;
   flex-direction: column;
-  margin: 1.91px 0 0 8px;
+  margin: calc(1.91px * var(--brand-scale)) 0 0 calc(8px * var(--brand-scale));
   font-family: 'Raleway', sans-serif;
   font-weight: 900;
+  white-space: nowrap;
 }
 
 .brand__name-top {
-  font-size: 30px;
-  line-height: 35px;
+  font-size: calc(30px * var(--brand-scale));
+  line-height: calc(35px * var(--brand-scale));
   color: #e10803;
 }
 
 .brand__name-bottom {
-  font-size: 33px;
-  line-height: 23px;
+  font-size: calc(33px * var(--brand-scale));
+  line-height: calc(23px * var(--brand-scale));
   color: #292b41;
 }
 

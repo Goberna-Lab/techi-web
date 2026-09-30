@@ -147,14 +147,16 @@
     padding: 0 16px;
   }
 
+  /* min-width 0: si falta espacio el logo cede y nunca empuja el botón fuera de la pantalla */
   .header__brand {
     flex: 1 1 auto;
+    min-width: 0;
     width: auto;
     margin: 0;
   }
 
   .header__brand .brand {
-    zoom: 0.68;
+    --brand-scale: 0.68;
   }
 
   .header__nav {
@@ -242,7 +244,7 @@
   }
 
   .header__brand .brand {
-    zoom: 0.58;
+    --brand-scale: 0.58;
   }
 
   .header__cta {
@@ -263,7 +265,7 @@
   }
 
   .header__brand .brand {
-    zoom: 0.8;
+    --brand-scale: 0.8;
   }
 
   .header__nav {
