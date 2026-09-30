@@ -136,7 +136,8 @@
   font-weight: 400;
   line-height: 14px;
   letter-spacing: 0.88px;
-  text-indent: var(--dx);
+  /* Sin sangría negativa: el input recorta lo que sale de su caja y se comía la "T" de "Tu nombre" */
+  text-indent: max(0px, var(--dx));
   color: #1b1f28;
 }
 
@@ -206,7 +207,7 @@
 }
 
 /* Laptop 1366 (XD 1366x620: barra roja 10 + fondo de 600) */
-@media (width: 1366px) {
+@media (min-width: 1024px) and (max-width: 1366px) {
   .footer {
     width: 1366px;
     height: 610px;

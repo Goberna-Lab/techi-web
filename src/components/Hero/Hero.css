@@ -148,7 +148,7 @@
 }
 
 /* Laptop 1366 (XD 1366x620: hero y 80 → 620, alto 540) */
-@media (width: 1366px) {
+@media (min-width: 1024px) and (max-width: 1366px) {
   .hero {
     --hero-h: 540px;
 

@@ -1,6 +1,6 @@
 .whatsapp-button {
   position: fixed;
-  right: 200px;
+  right: 40px;
   bottom: 20px;
   z-index: 50;
   display: block;
@@ -13,10 +13,18 @@
   display: block;
 }
 
-/* Laptop 1366: el XD 1366x620 no lo trae */
-@media (width: 1366px) {
+/* Laptop 1366: el XD 1366x620 no lo trae; mismo criterio que en 1920, en proporción (1366/1920) */
+@media (min-width: 1024px) and (max-width: 1366px) {
   .whatsapp-button {
-    display: none;
+    right: 28.46px;
+    bottom: 14.23px;
+    width: 45.36px;
+    height: 45.36px;
+  }
+
+  .whatsapp-button img {
+    width: 45.36px;
+    height: 45.36px;
   }
 }
 

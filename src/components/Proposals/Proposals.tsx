@@ -70,7 +70,7 @@ const DESCENT: Record<string, number> = {
 }
 
 /* Laptop 1366: su propio XD (1366x620). Mobile (hasta 767): versión en flujo, sin XD */
-const LAPTOP_QUERY = '(width: 1366px)'
+const LAPTOP_QUERY = '(min-width: 1024px) and (max-width: 1366px)'
 const MOBILE_QUERY = '(max-width: 1023px)'
 
 function useMediaQuery(media: string) {

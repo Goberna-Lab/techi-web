@@ -18,9 +18,18 @@ html {
    contenedor de scroll, así que ni la rueda ni las anclas pueden correr la página. Lo que se
    recorta es fondo: el contenido termina en x 1720. Solo desde 1366: en pantallas más angostas
    (móvil) no hay diseño propio y hace falta poder deslizar para ver el resto. */
-@media (min-width: 1366px) {
+@media (min-width: 1024px) {
   #root {
     overflow-x: clip;
+  }
+}
+
+/* Escritorio con otro ancho que el de los XD (1280, 1440, 1536 por el escalado de Windows, 2K, 4K...):
+   la página entera escala para ocupar justo el ancho visible, sin cortes ni huecos. De 1024 a 1366 se
+   escala el XD laptop y desde 1367 el de 1920. --page-zoom lo calcula main.tsx (1 en 1366 y 1920 exactos) */
+@media (min-width: 1024px) {
+  #root {
+    zoom: var(--page-zoom);
   }
 }
 
@@ -47,10 +56,10 @@ img {
   display: none;
 }
 
-/* Laptop 1366px: tiene su propio XD (1366x620). Cada componente trae sus medidas en su CSS */
-@media (width: 1366px) {
+/* Laptop 1366px: tiene su propio XD (1366x620), que cubre de 1024 a 1366 (escalado). Cada componente trae sus medidas en su CSS */
+@media (min-width: 1024px) and (max-width: 1366px) {
   html {
-    scroll-padding-top: 80px;
+    scroll-padding-top: calc(80px * var(--page-zoom));
   }
 
   .br-wide {

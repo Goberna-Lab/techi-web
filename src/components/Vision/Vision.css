@@ -82,7 +82,7 @@
 }
 
 /* Laptop 1366 (XD 1366x620: y 2482 → 2832) */
-@media (width: 1366px) {
+@media (min-width: 1024px) and (max-width: 1366px) {
   .vision {
     width: 1366px;
     height: 350px;

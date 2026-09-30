@@ -196,7 +196,7 @@
 }
 
 /* Laptop 1366 (XD 1366x620: y 620 → 1294.2) */
-@media (width: 1366px) {
+@media (min-width: 1024px) and (max-width: 1366px) {
   /* Sin recorte: en XD el rótulo "profesional" baja 6px más allá del alto de la sección (la foto ya se recorta en su máscara) */
   .about {
     width: 1366px;

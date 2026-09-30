@@ -74,7 +74,7 @@
 }
 
 /* Laptop 1366 (XD 1366x620: sección de 350 de alto) */
-@media (width: 1366px) {
+@media (min-width: 1024px) and (max-width: 1366px) {
   .vote {
     width: 1366px;
     height: 350px;
