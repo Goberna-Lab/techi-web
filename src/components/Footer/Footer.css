@@ -17,10 +17,13 @@
   left: 561.25px;
 }
 
+/* Foto del XD: 875x665 en x 460, apoyada abajo del footer (en el XD termina en el borde inferior) */
 .footer__photo {
   position: absolute;
-  top: 128px;
-  left: 629px;
+  top: 108px;
+  left: 460px;
+  width: 875px;
+  height: 665px;
   object-fit: cover;
 }
 
@@ -231,12 +234,12 @@
     height: 330.5px;
   }
 
-  /* Foto 538x538 en (365, 5188) */
+  /* Foto del XD 1920 (875x665) a la escala del laptop (538/646), apoyada abajo como la anterior */
   .footer__photo {
-    top: 62px;
-    left: 365px;
-    width: 538px;
-    height: 538px;
+    top: 46.2px;
+    left: 224.3px;
+    width: 728.7px;
+    height: 553.8px;
   }
 
   /* El logo y las redes miden igual que en 1920: logo en (78, 5264); la tarjeta empieza en x 845 */
@@ -376,7 +379,7 @@
     left: auto;
     z-index: 1;
     align-self: center;
-    width: min(88vw, 400px);
+    width: min(100%, 460px);
     height: auto;
     margin-top: 32px;
   }
@@ -422,7 +425,7 @@
   }
 
   .footer__photo {
-    width: 380px;
+    width: 500px;
     margin: 40px auto 0;
   }
 

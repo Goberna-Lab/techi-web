@@ -46,7 +46,7 @@ function Footer() {
   return (
     <footer className="footer" id="sumate">
       <img className="footer__arc" src={arc} width="765.75" height="383" alt="" aria-hidden="true" />
-      <img className="footer__photo" src={techiFooter} width="646" height="646" alt="Techi Maestre" />
+      <img className="footer__photo" src={techiFooter} width="875" height="665" alt="Techi Maestre" />
 
       <div className="footer__info">
         <Brand variant="dark" />
