@@ -30,7 +30,8 @@
   stroke: var(--about-red);
 }
 
-.about__arc--laptop {
+.about__arc--laptop,
+.about__arc--phone {
   display: none;
 }
 
@@ -358,7 +359,7 @@
     aspect-ratio: 933 / 800;
   }
 
-  /* Aquí sigue la foto anterior, que ya trae el arco */
+  /* En tablet sigue la foto anterior, que ya trae el arco (mobile muestra el suyo más abajo) */
   .about__arc {
     display: none;
   }
@@ -495,8 +496,8 @@
   }
 }
 
-/* Mobile (hasta 767px): XD 430 → sección 430x1171 (y 929 → 2100). Foto + arco en una máscara 441x433.6
-   en (0, 0); imagen 654x535 en (-202.3, -82.4). Todo el texto va en x 16 */
+/* Mobile (hasta 767px): XD 430 → sección 430x1171 (y 929 → 2100). Arco rojo (trazo 155) en una máscara
+   430x416 en (0, 0) y encima la foto 02-TECHI 370x404 en (43, 9), imagen 1101x1200 en cubrir. Todo el texto va en x 16 */
 @media (max-width: 767px) {
   .about {
     display: block;
@@ -508,17 +509,21 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 441.04px;
-    height: 433.61px;
+    width: 430px;
+    height: 416px;
     margin: 0;
+  }
+
+  .about__arc--phone {
+    display: block;
   }
 
   .about__media img {
     position: absolute;
-    top: -82.4px;
-    left: -202.3px;
-    width: 654.05px;
-    height: 534.97px;
+    top: 9px;
+    left: 43px;
+    width: 370px;
+    height: 404px;
     max-width: none;
   }
 

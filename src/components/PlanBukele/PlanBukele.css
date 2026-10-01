@@ -16,6 +16,10 @@
   object-fit: cover;
 }
 
+.bukele__text {
+  display: none;
+}
+
 /* personas: 829x753 en (874, 36), imagen 1808x1642 en relleno */
 .bukele__people {
   position: absolute;
@@ -41,9 +45,35 @@
   }
 }
 
-/* Mobile y tablet (hasta 1023px): por ahora sigue la sección anterior */
-@media (max-width: 1023px) {
+/* Tablet (768–1023px): por ahora sigue la sección anterior */
+@media (min-width: 768px) and (max-width: 1023px) {
   .bukele {
     display: none;
+  }
+}
+
+/* Mobile (hasta 767px): XD 430 → sección 430x760 (y 2621 → 3381, 1px debajo de la experiencia). Fondo vertical
+   430x760; texto 366x301 en (28, 39), imagen 744x612; personas 430x391 en (0, 369) */
+@media (max-width: 767px) {
+  .bukele {
+    width: 430px;
+    height: 760px;
+    margin-top: 1px;
+  }
+
+  .bukele__text {
+    position: absolute;
+    top: 39px;
+    left: 28px;
+    display: block;
+    width: 366px;
+    height: 301px;
+  }
+
+  .bukele__people {
+    top: 369px;
+    left: 0;
+    width: 430px;
+    height: 391px;
   }
 }

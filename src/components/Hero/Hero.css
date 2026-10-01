@@ -325,7 +325,7 @@
     margin-top: 28px;
   }
 
-  /* Foto anterior (imagen 681x908 en una máscara 655x843) */
+  /* Tablet: foto anterior (imagen 681x908 en una máscara 655x843) */
   .hero__portrait img {
     left: -3.9695%;
     width: 103.9695%;
@@ -383,7 +383,7 @@
 }
 
 /* Mobile (hasta 767px): XD 430 → hero 430x859 (y 70 → 929). Arriba una franja #f1f1f2 de 117 y el fondo
-   1461x823 en (-372, 113); la foto va en una máscara 400x477 en (15, 382), apoyada abajo */
+   1461x823 en (-372, 113); la foto va en (11, 388), apoyada abajo */
 @media (max-width: 767px) {
   .hero {
     display: block;
@@ -408,22 +408,22 @@
     object-fit: fill;
   }
 
-  /* Imagen 416x555 en (-16, 0) dentro de la máscara */
+  /* Foto 01-TECHI: 409x471 en (11, 388), apoyada abajo; imagen 889x1024 en relleno */
   .hero__portrait {
     position: absolute;
-    top: 382px;
-    left: 15px;
-    width: 400px;
-    height: 477px;
+    top: 388px;
+    left: 11px;
+    width: 409px;
+    height: 471px;
     margin: 0;
     aspect-ratio: auto;
   }
 
   .hero__portrait img {
     top: 0;
-    left: -16px;
-    width: 416px;
-    height: 555px;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
 
   /* Poppins ExtraBold: 28 (línea base 73) y SURQUILLO. 44 (línea base 114) en x 16 */

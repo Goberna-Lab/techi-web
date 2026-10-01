@@ -1,5 +1,5 @@
-/* "No vengo a prometer" — en 1366 y 1920 el XD la reemplazó por Plan Bukele; sigue solo hasta 1023px */
-@media (min-width: 1024px) {
+/* "No vengo a prometer" — en 1920, 1366 y mobile el XD la reemplazó por Plan Bukele; sigue solo en tablet */
+@media (min-width: 1024px), (max-width: 767px) {
   .quote {
     display: none;
   }

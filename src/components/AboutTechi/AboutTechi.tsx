@@ -9,7 +9,7 @@ function AboutTechi() {
   return (
     <section className="about" id="conoce-a-techi">
       <div className="about__media">
-        {/* Arco rojo del XD (trazo de 270 en 1920 y de 250 en 1366), en coordenadas de la sección */}
+        {/* Arco rojo del XD (trazo de 270 en 1920, 250 en 1366 y 155 en mobile), en coordenadas de la sección */}
         <svg className="about__arc about__arc--wide" viewBox="0 0 864 819" aria-hidden="true">
           <path
             transform="matrix(0.7431448 0.6691306 -0.6691306 0.7431448 558.2637 -193.0428)"
@@ -24,8 +24,15 @@ function AboutTechi() {
             strokeWidth="250"
           />
         </svg>
+        <svg className="about__arc about__arc--phone" viewBox="0 0 430 416" aria-hidden="true">
+          <path
+            transform="matrix(0.7431448 0.6691306 -0.6691306 0.7431448 241.8399 -95.6594)"
+            d="M 0 0 C 135.5348 0 245.5912 110.0564 245.5912 245.5913 C 245.5912 381.1261 135.5348 491.1825 0 491.1825"
+            strokeWidth="155"
+          />
+        </svg>
         <picture>
-          <source media="(min-width: 1024px)" srcSet={techi02} />
+          <source media="(min-width: 1024px), (max-width: 767px)" srcSet={techi02} />
           <img src={techiArco} alt="María Teresa Maestre" />
         </picture>
       </div>

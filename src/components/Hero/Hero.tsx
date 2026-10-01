@@ -14,7 +14,7 @@ function Hero() {
       </div>
 
       <picture className="hero__portrait">
-        <source media="(min-width: 1024px)" srcSet={techi01} />
+        <source media="(min-width: 1024px), (max-width: 767px)" srcSet={techi01} />
         <img src={techiMaestre} alt="Techi Maestre" />
       </picture>
 

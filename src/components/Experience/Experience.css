@@ -347,21 +347,14 @@
     display: flex;
   }
 
-  /* Círculos de 113 en x 146 / 140 / 154 de la página */
-  .experience__item .experience__icon {
+  /* Círculo de 113 centrado sobre el título y el texto (x 154 de la página) en los tres ítems,
+     para que no se mueva al pasar de uno a otro */
+  .experience__item .experience__icon,
+  .experience__item--surquillo .experience__icon,
+  .experience__item--trayectoria .experience__icon,
+  .experience__item--servicio .experience__icon {
     width: 113px;
     height: 113px;
-  }
-
-  .experience__item--surquillo .experience__icon {
-    margin-left: 96px;
-  }
-
-  .experience__item--trayectoria .experience__icon {
-    margin-left: 90px;
-  }
-
-  .experience__item--servicio .experience__icon {
     margin-left: 104px;
   }
 

@@ -103,7 +103,7 @@ function ArrowIcon({ direction, style }: { direction: 'prev' | 'next'; style: CS
 }
 
 /* Un renglón de XD: posición absoluta con su línea base exacta; cada tramo con su estilo */
-function TextLine({ line, heading }: { line: Line; heading?: boolean }) {
+function TextLine({ line, heading, order }: { line: Line; heading?: boolean; order?: number }) {
   const first = line.runs[0]
   const ascent = ASCENT[first.f] ?? 1
   const descent = DESCENT[first.f] ?? 0.3
@@ -116,7 +116,8 @@ function TextLine({ line, heading }: { line: Line; heading?: boolean }) {
         left: line.x,
         top: line.base - ascent * first.s,
         lineHeight: `${(ascent + descent) * first.s}px`,
-      }}
+        ...(order === undefined ? {} : { '--order': order }),
+      } as CSSProperties}
     >
       {line.runs.map((run, index) => (
         <span
@@ -252,7 +253,7 @@ function ProposalsMobile() {
         <img key={proposal.image} src={IMAGES[proposal.image]} alt={proposal.alt} />
       </div>
 
-      <div className="proposals-m__body">
+      <div className="proposals-m__body" key={`body-${proposal.number}`}>
         {proposal.text.map((line) => (
           <p key={line} className="proposals-m__text">
             {line}
@@ -393,45 +394,49 @@ function ProposalsAccordion() {
                 <Chevron />
               </button>
 
-              {isOpen && (
-                <div className="proposals-a__panel">
-                  <p className="proposals-a__subtitle">{proposal.subtitle}</p>
+              {/* Todas las propuestas tienen su panel; la altura se anima de 0 a la del contenido */}
+              <div className="proposals-a__collapse" inert={!isOpen}>
+                <div className="proposals-a__clip">
+                  <div className="proposals-a__panel">
+                    <p className="proposals-a__subtitle">{proposal.subtitle}</p>
 
-                  <div className={`proposals-a__text${proposal.measures.length ? '' : ' proposals-a__text--list'}`}>
-                    {proposal.text.map((line) => (
-                      <p key={line}>{line}</p>
-                    ))}
-                  </div>
-
-                  {proposal.measures.length > 0 && (
-                    <ul className="proposals-a__measures">
-                      {proposal.measures.map((measure) => (
-                        <li key={measure.title} className="proposals-a__measure">
-                          <img src={checkIcon} width="19.4" height="19.4" alt="" />
-                          <p>
-                            <strong>{measure.title}</strong>
-                            <br />
-                            {measure.text}
-                          </p>
-                          {measure.bullets?.map((bullet) => (
-                            <p key={bullet} className="proposals-a__bullet">
-                              {bullet}
-                            </p>
-                          ))}
-                        </li>
+                    <div className={`proposals-a__text${proposal.measures.length ? '' : ' proposals-a__text--list'}`}>
+                      {proposal.text.map((line) => (
+                        <p key={line}>{line}</p>
                       ))}
-                    </ul>
-                  )}
+                    </div>
 
-                  <div className="proposals-a__media">
-                    <img
-                      src={IMAGES[proposal.image]}
-                      alt={proposal.alt}
-                      style={(([left, top, width, height]) => ({ left, top, width, height }))(ACCORDION_CROPS[proposal.number])}
-                    />
+                    {proposal.measures.length > 0 && (
+                      <ul className="proposals-a__measures">
+                        {proposal.measures.map((measure) => (
+                          <li key={measure.title} className="proposals-a__measure">
+                            <img src={checkIcon} width="19.4" height="19.4" alt="" />
+                            <p>
+                              <strong>{measure.title}</strong>
+                              <br />
+                              {measure.text}
+                            </p>
+                            {measure.bullets?.map((bullet) => (
+                              <p key={bullet} className="proposals-a__bullet">
+                                {bullet}
+                              </p>
+                            ))}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+
+                    <div className="proposals-a__media">
+                      <img
+                        src={IMAGES[proposal.image]}
+                        alt={proposal.alt}
+                        style={(([left, top, width, height]) => ({ left, top, width, height }))(ACCORDION_CROPS[proposal.number])}
+                        loading="lazy"
+                      />
+                    </div>
                   </div>
                 </div>
-              )}
+              </div>
             </li>
           )
         })}
@@ -507,14 +512,14 @@ function ProposalsDesktop() {
   return (
     <section className={`proposals proposals--${variant}`} id="propuestas" style={{ height: board.height }}>
       {board.lines.map((line, index) => (
-        <TextLine key={`${active}-${index}`} line={line} heading={isHeading(line)} />
+        <TextLine key={`${active}-${index}`} line={line} heading={isHeading(line)} order={Math.min(index, 12)} />
       ))}
       {board.rules.map((rule, index) => (
-        <RuleBar key={index} rule={rule} />
+        <RuleBar key={`${active}-${index}`} rule={rule} />
       ))}
       {board.checks.map((check, index) => (
         <img
-          key={index}
+          key={`${active}-${index}`}
           className="proposals__check"
           src={checkIcon}
           alt=""

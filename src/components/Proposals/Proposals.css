@@ -1,10 +1,95 @@
 /* Nuestras propuestas — cada artboard del XD (8 por diseño) trae su layout en proposalsLayout.ts:
    renglones, fotos, tarjetas y flechas van en posición absoluta, tal cual el XD */
 .proposals {
+  --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+
   position: relative;
   width: 1920px;
   overflow: hidden;
   background: #ffffff;
+  transition: height 0.5s var(--ease-out);
+}
+
+/* Al cambiar de propuesta: los textos entran escalonados (fundido + 12px hacia arriba), las líneas
+   y checks con fundido, la foto con fundido y un zoom leve, y las tarjetas se deslizan a su lugar */
+@keyframes proposals-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+@keyframes proposals-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes proposals-photo {
+  from {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+}
+
+.proposals > .proposals__line {
+  animation: proposals-rise 0.55s var(--ease-out) backwards;
+  animation-delay: calc(var(--order, 0) * 35ms);
+}
+
+.proposals > .proposals__rule,
+.proposals > .proposals__check {
+  animation: proposals-fade 0.5s ease 0.15s backwards;
+}
+
+.proposals__media img {
+  animation: proposals-photo 0.7s var(--ease-out) backwards;
+}
+
+.proposals__media {
+  transition:
+    left 0.5s var(--ease-out),
+    top 0.5s var(--ease-out),
+    width 0.5s var(--ease-out),
+    height 0.5s var(--ease-out);
+}
+
+.proposal-card,
+.proposal-card__outline {
+  transition:
+    left 0.5s var(--ease-out),
+    top 0.5s var(--ease-out);
+}
+
+.proposals__arrow {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.proposals__arrow:hover {
+  transform: scale(1.06);
+}
+
+.proposals__arrow:active {
+  transform: scale(0.96);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .proposals,
+  .proposals__media,
+  .proposal-card,
+  .proposal-card__outline,
+  .proposals__arrow {
+    transition: none;
+  }
+
+  .proposals > .proposals__line,
+  .proposals > .proposals__rule,
+  .proposals > .proposals__check,
+  .proposals__media img {
+    animation: none;
+  }
 }
 
 .proposals--laptop {
@@ -577,6 +662,54 @@
   transform: rotate(180deg);
 }
 
+/* Abrir y cerrar con suavidad: la altura va de 0 a la del contenido (filas de grid 0fr → 1fr)
+   y el contenido aparece con un fundido y un desplazamiento leve */
+.proposals-a__collapse {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.45s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.proposals-a__item--open .proposals-a__collapse {
+  grid-template-rows: 1fr;
+}
+
+.proposals-a__clip {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.proposals-a__clip > .proposals-a__panel {
+  opacity: 0;
+  transform: translateY(-8px);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.proposals-a__item--open .proposals-a__panel {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.4s ease 0.1s,
+    transform 0.45s cubic-bezier(0.33, 1, 0.68, 1) 0.1s;
+}
+
+.proposals-a__chevron {
+  transition:
+    transform 0.35s cubic-bezier(0.33, 1, 0.68, 1),
+    top 0.35s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .proposals-a__collapse,
+  .proposals-a__clip > .proposals-a__panel,
+  .proposals-a__item--open .proposals-a__panel,
+  .proposals-a__chevron {
+    transition: none;
+  }
+}
+
 .proposals-a__panel {
   padding: 9px 0 44px;
 }
@@ -682,4 +815,22 @@
   position: absolute;
   display: block;
   max-width: none;
+}
+
+/* Tablet: al cambiar de propuesta, título, foto y texto entran con fundido */
+.proposals-m__intro,
+.proposals-m__body {
+  animation: proposals-rise 0.5s cubic-bezier(0.33, 1, 0.68, 1) backwards;
+}
+
+.proposals-m__media img {
+  animation: proposals-photo 0.6s cubic-bezier(0.33, 1, 0.68, 1) backwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .proposals-m__intro,
+  .proposals-m__body,
+  .proposals-m__media img {
+    animation: none;
+  }
 }
