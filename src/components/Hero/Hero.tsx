@@ -1,5 +1,6 @@
 import heroBg from '../../assets/hero/hero-bg.webp'
 import techiMaestre from '../../assets/hero/techi-maestre.webp'
+import techi01 from '../../assets/hero/techi-01.webp'
 import iconPropuestas from '../../assets/hero/icon-propuestas.svg'
 import iconVoluntariado from '../../assets/hero/icon-voluntariado.svg'
 import './Hero.css'
@@ -12,9 +13,10 @@ function Hero() {
         <img className="hero__bg-img hero__bg-img--main" src={heroBg} alt="" />
       </div>
 
-      <div className="hero__portrait">
+      <picture className="hero__portrait">
+        <source media="(min-width: 1024px)" srcSet={techi01} />
         <img src={techiMaestre} alt="Techi Maestre" />
-      </div>
+      </picture>
 
       <div className="hero__content">
         <h1 className="hero__title">

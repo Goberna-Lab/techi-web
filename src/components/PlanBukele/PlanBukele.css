@@ -1,0 +1,49 @@
+/* Plan Bukele — desktop 1920 (XD artboard: y 2675 → 3463). Reemplaza a "No vengo a prometer" en 1366 y 1920 */
+.bukele {
+  position: relative;
+  width: 1920px;
+  height: 788px;
+  overflow: hidden;
+}
+
+/* Banner-bukele: 1920x788 en (0, 0), imagen 2000x821 en cubrir */
+.bukele__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* personas: 829x753 en (874, 36), imagen 1808x1642 en relleno */
+.bukele__people {
+  position: absolute;
+  top: 36px;
+  left: 874px;
+  width: 829px;
+  height: 753px;
+  object-fit: cover;
+}
+
+/* Laptop 1366 (XD 1366x620: y 1948 → 2508). Banner 1366x560; personas 590x535 en (652, 25) */
+@media (min-width: 1024px) and (max-width: 1366px) {
+  .bukele {
+    width: 1366px;
+    height: 560px;
+  }
+
+  .bukele__people {
+    top: 25px;
+    left: 652px;
+    width: 590px;
+    height: 535px;
+  }
+}
+
+/* Mobile y tablet (hasta 1023px): por ahora sigue la sección anterior */
+@media (max-width: 1023px) {
+  .bukele {
+    display: none;
+  }
+}

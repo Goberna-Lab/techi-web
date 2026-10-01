@@ -1,4 +1,11 @@
-/* "No vengo a prometer" — desktop 1920 (XD artboard: y 2675 → 3425) */
+/* "No vengo a prometer" — en 1366 y 1920 el XD la reemplazó por Plan Bukele; sigue solo hasta 1023px */
+@media (min-width: 1024px) {
+  .quote {
+    display: none;
+  }
+}
+
+/* desktop 1920 (XD artboard anterior: y 2675 → 3425) */
 .quote {
   position: relative;
   width: 1920px;

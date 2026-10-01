@@ -1,4 +1,5 @@
 import techiArco from '../../assets/about/techi-maestre-arco.webp'
+import techi02 from '../../assets/about/techi-02.webp'
 import iconArrow from '../../assets/about/icon-arrow.svg'
 import statHome from '../../assets/about/stat-home.svg'
 import statWork from '../../assets/about/stat-work.svg'
@@ -8,7 +9,25 @@ function AboutTechi() {
   return (
     <section className="about" id="conoce-a-techi">
       <div className="about__media">
-        <img src={techiArco} alt="María Teresa Maestre" />
+        {/* Arco rojo del XD (trazo de 270 en 1920 y de 250 en 1366), en coordenadas de la sección */}
+        <svg className="about__arc about__arc--wide" viewBox="0 0 864 819" aria-hidden="true">
+          <path
+            transform="matrix(0.7431448 0.6691306 -0.6691306 0.7431448 558.2637 -193.0428)"
+            d="M 0.5 0.5 C 273.0117 0.5 494.2955 221.7838 494.2955 494.2955 C 494.2955 766.8071 273.0117 988.0909 0.5 988.0909"
+            strokeWidth="270"
+          />
+        </svg>
+        <svg className="about__arc about__arc--laptop" viewBox="0 0 720 698" aria-hidden="true">
+          <path
+            transform="matrix(0.7431448 0.6691306 -0.6691306 0.7431448 404.9412 -160.174)"
+            d="M 0 0 C 226.942 0 411.2226 184.2805 411.2226 411.2226 C 411.2226 638.1646 226.942 822.4451 0 822.4451"
+            strokeWidth="250"
+          />
+        </svg>
+        <picture>
+          <source media="(min-width: 1024px)" srcSet={techi02} />
+          <img src={techiArco} alt="María Teresa Maestre" />
+        </picture>
       </div>
 
       <div className="about__content">

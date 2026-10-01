@@ -4,7 +4,7 @@ import './Quote.css'
 function Quote() {
   return (
     <section className="quote">
-      <img className="quote__bg" src={quoteBg} alt="" aria-hidden="true" />
+      <img className="quote__bg" src={quoteBg} alt="" aria-hidden="true" loading="lazy" />
       <div className="quote__overlay" aria-hidden="true" />
 
       <blockquote className="quote__content">

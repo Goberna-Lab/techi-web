@@ -10,22 +10,36 @@
   background: #ffffff;
 }
 
-/* Foto + arco rojo (una sola imagen en XD): máscara 933x800 en (0, 0); imagen 1207x987 en (-254, -152) */
+/* Arco rojo en una máscara 864x819 en (0, 0) y encima la foto 02-TECHI: 745x813 en (108, 4), imagen 1101x1200 en cubrir */
 .about__media {
   position: absolute;
   top: 0;
   left: 0;
-  width: 933px;
-  height: 800px;
+  width: 864px;
+  height: 819px;
   overflow: hidden;
+}
+
+.about__arc {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: var(--about-red);
+}
+
+.about__arc--laptop {
+  display: none;
 }
 
 .about__media img {
   position: absolute;
-  top: -152px;
-  left: -254px;
-  width: 1207px;
-  height: 987px;
+  top: 4px;
+  left: 108px;
+  width: 745px;
+  height: 813px;
   object-fit: cover;
 }
 
@@ -204,17 +218,26 @@
     overflow: visible;
   }
 
-  /* Máscara 685.8x674.2 en (0, 0); imagen 1017x831.8 en (-314.6, -128.1) */
+  /* Máscara 720x698 en (0, 0) con su arco (pasa por encima del inicio de la sección siguiente, como en XD);
+     foto 02-TECHI 620x677 en (72, 16) */
   .about__media {
-    width: 685.8px;
-    height: 674.2px;
+    width: 720px;
+    height: 698px;
+  }
+
+  .about__arc--wide {
+    display: none;
+  }
+
+  .about__arc--laptop {
+    display: block;
   }
 
   .about__media img {
-    top: -128.1px;
-    left: -314.6px;
-    width: 1017px;
-    height: 831.8px;
+    top: 16px;
+    left: 72px;
+    width: 620px;
+    height: 677px;
   }
 
   .about__content {
@@ -333,6 +356,11 @@
     width: 100%;
     height: auto;
     aspect-ratio: 933 / 800;
+  }
+
+  /* Aquí sigue la foto anterior, que ya trae el arco */
+  .about__arc {
+    display: none;
   }
 
   .about__media img {

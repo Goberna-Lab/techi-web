@@ -2,6 +2,7 @@ import Header from './components/Header/Header'
 import Hero from './components/Hero/Hero'
 import AboutTechi from './components/AboutTechi/AboutTechi'
 import Experience from './components/Experience/Experience'
+import PlanBukele from './components/PlanBukele/PlanBukele'
 import Quote from './components/Quote/Quote'
 import Vision from './components/Vision/Vision'
 import Proposals from './components/Proposals/Proposals'
@@ -17,6 +18,7 @@ function App() {
         <Hero />
         <AboutTechi />
         <Experience />
+        <PlanBukele />
         <Quote />
         <Vision />
         <Proposals />
